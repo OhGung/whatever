@@ -11,6 +11,15 @@ import CoreData
 
 
 extension CycleLog {
+    
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<CycleLog> {
+        return NSFetchRequest<CycleLog>(entityName: "CycleLog")
+    }
+    
+    @NSManaged public var flowLevel: Int64
+    @NSManaged public var padType: Int64
+    @NSManaged public var timestamp: Date?
+    
     var wrappedPadType: String {
         let padTypeEnum = PadTypeEnum(rawValue: Int(padType)) ?? .liner
         return padTypeEnum.description
@@ -35,8 +44,9 @@ extension CycleLog {
         
         return cycleLog
     }
+    
 }
 
 extension CycleLog : Identifiable {
-
+    
 }
