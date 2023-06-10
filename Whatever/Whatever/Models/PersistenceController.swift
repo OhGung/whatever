@@ -1,5 +1,5 @@
 //
-//  Persistence.swift
+//  PersistenceController.swift
 //  Whatever
 //
 //  Created by sei on 2023/06/10.
@@ -13,10 +13,14 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+        
+        for i in 0..<5 {
+            let newCycleLog = CycleLog(context: viewContext)
+            newCycleLog.timestamp = Date()
+            newCycleLog.flowLevel = Int64(i)
+            newCycleLog.padType = Int64(4 - i)
         }
+        
         do {
             try viewContext.save()
         } catch {
