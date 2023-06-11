@@ -1,5 +1,5 @@
 //
-//  PeriodList.swift
+//  PeriodListView.swift
 //  Whatever
 //
 //  Created by sei on 2023/06/07.
@@ -10,14 +10,13 @@ import SwiftUI
 struct PeriodListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @State private var isAddingNewCycleLog = false
-    
     var items: FetchedResults<CycleLog>
     
     var body: some View {
         List {
             ForEach(items) { item in
                 NavigationLink {
-                    PeriodDetail(cycleLog: item, context: viewContext)
+                    PeriodDetailView(cycleLog: item, context: viewContext)
                 } label: {
                     cycleRow(item)
                 }
@@ -38,12 +37,12 @@ struct PeriodListView: View {
         }
         .sheet(isPresented: $isAddingNewCycleLog) {
             NavigationView {
-                PeriodWrite()
+                LogAddView()
             }
         }
     }
     
-    func cycleRow(_ cycle: CycleLog) -> some View {
+    private func cycleRow(_ cycle: CycleLog) -> some View {
         HStack(spacing: 10) {
             Text("\(cycle.wrappedDate, formatter: itemFormatter)")
             Text(cycle.wrappedPadType)
@@ -51,23 +50,13 @@ struct PeriodListView: View {
         }
     }
     
-    // MARK: - Delete Cycle Log
+    // MARK: - Usage of Delete Cycle Log
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+            offsets.map { items[$0] }.forEach(PersistenceController.shared.deleteLog)
         }
     }
 }
-
-
 
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()
