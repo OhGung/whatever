@@ -207,6 +207,9 @@
 				0332D53F2A387143003952B3 /* NotificationAllowOneView.swift */,
 				0332D5412A387C7A003952B3 /* NotificationAllowTwoView.swift */,
 				0332D5472A398308003952B3 /* SettingAlarmView.swift */,
+				B29135572A34DD700046F956 /* LogAddView.swift */,
+				0332D53F2A387143003952B3 /* NotificationAllowOneView.swift */,
+				0332D5412A387C7A003952B3 /* NotificationAllowTwoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
