@@ -158,10 +158,10 @@
 		B23202102A382978005919FE /* LogAdd */ = {
 			isa = PBXGroup;
 			children = (
-				0332D54A2A3A2098003952B3 /* LogAddView.swift */,
-				B23202162A3858A3005919FE /* LogAddViewModel.swift */,
+				0332D54B2A3A2098003952B3 /* LogAddView.swift */,
 				B23202112A382A13005919FE /* PadImageView.swift */,
 				B23202132A383055005919FE /* SegmentedControl.swift */,
+				B23202162A3858A3005919FE /* LogAddViewModel.swift */,
 			);
 			path = LogAdd;
 			sourceTree = "<group>";
@@ -207,7 +207,7 @@
 				0332D53F2A387143003952B3 /* NotificationAllowOneView.swift */,
 				0332D5412A387C7A003952B3 /* NotificationAllowTwoView.swift */,
 				0332D5472A398308003952B3 /* SettingAlarmView.swift */,
-				B29135572A34DD700046F956 /* LogAddView.swift */,
+				0332D54B2A3A2098003952B3 /* LogAddView.swift */,
 				0332D53F2A387143003952B3 /* NotificationAllowOneView.swift */,
 				0332D5412A387C7A003952B3 /* NotificationAllowTwoView.swift */,
 			);
