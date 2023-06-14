@@ -7,10 +7,24 @@
 
 import Foundation
 import UserNotifications
+import UIKit
 
-class LocalNotificationHelper {
+class LocalNotificationHelper: ObservableObject {
     static let shared = LocalNotificationHelper()
     
+    @Published var isNotificationOn: Bool = UserDefaults.standard.bool(forKey: "hasUserAgreedNoti") {
+            didSet {
+                if isNotificationOn {
+                    // On Action - 1
+                    UserDefaults.standard.set(true, forKey: "hasUserAgreedNoti")
+                }
+                else {
+                    // Off Action - 2
+                    UserDefaults.standard.set(false, forKey: "hasUserAgreedNoti")
+                }
+            }
+        }
+
     private init() { }
     
     func setAuthorization(completion: ((_ success: Bool) -> Void)? = nil) {
