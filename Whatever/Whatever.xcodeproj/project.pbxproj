@@ -39,6 +39,8 @@
 		B2B27EB22A3475C6000F2944 /* WhateverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B27EB12A3475C6000F2944 /* WhateverTests.swift */; };
 		B2B27EBC2A3475C6000F2944 /* WhateverUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B27EBB2A3475C6000F2944 /* WhateverUITests.swift */; };
 		B2B27EBE2A3475C6000F2944 /* WhateverUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B27EBD2A3475C6000F2944 /* WhateverUITestsLaunchTests.swift */; };
+		B5E28FF02A39DB2D00DCF0BF /* DailyCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E28FEF2A39DB2D00DCF0BF /* DailyCheckView.swift */; };
+		B5E28FF22A39EF5300DCF0BF /* EductionTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E28FF12A39EF5300DCF0BF /* EductionTip.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +97,8 @@
 		B2B27EB72A3475C6000F2944 /* WhateverUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhateverUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2B27EBB2A3475C6000F2944 /* WhateverUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhateverUITests.swift; sourceTree = "<group>"; };
 		B2B27EBD2A3475C6000F2944 /* WhateverUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhateverUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B5E28FEF2A39DB2D00DCF0BF /* DailyCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCheckView.swift; sourceTree = "<group>"; };
+		B5E28FF12A39EF5300DCF0BF /* EductionTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EductionTip.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +193,7 @@
 			children = (
 				B23202072A38025D005919FE /* Component */,
 				B29135462A34DA7C0046F956 /* MainView.swift */,
+				B5E28FEF2A39DB2D00DCF0BF /* DailyCheckView.swift */,
 				B29135512A34DC9E0046F956 /* PeriodListView.swift */,
 				B29135532A34DCDB0046F956 /* PeriodDetailView.swift */,
 				B23202102A382978005919FE /* LogAdd */,
@@ -231,6 +236,7 @@
 				B23202182A38595B005919FE /* Common */,
 				0332D53C2A375730003952B3 /* Info.plist */,
 				B2B27E9B2A3475C4000F2944 /* WhateverApp.swift */,
+				B5E28FF12A39EF5300DCF0BF /* EductionTip.swift */,
 				B29135452A34DA600046F956 /* Views */,
 				B29135442A34DA560046F956 /* Models */,
 				B2B27ECA2A3475FB000F2944 /* Resources */,
@@ -419,8 +425,10 @@
 				B291354A2A34DB850046F956 /* CycleLog+CoreDataClass.swift in Sources */,
 				B232020D2A3826F4005919FE /* View+.swift in Sources */,
 				B23202122A382A13005919FE /* PadImageView.swift in Sources */,
+				B5E28FF22A39EF5300DCF0BF /* EductionTip.swift in Sources */,
 				B29135502A34DC110046F956 /* FlowLevelEnum.swift in Sources */,
 				B29135562A34DD2C0046F956 /* PersistenceController+CycleLog.swift in Sources */,
+				B5E28FF02A39DB2D00DCF0BF /* DailyCheckView.swift in Sources */,
 				B23202092A38026A005919FE /* CapsuleView.swift in Sources */,
 				B232020F2A382792005919FE /* Theme.swift in Sources */,
 				B291354E2A34DBE90046F956 /* PadTypeEnum.swift in Sources */,
