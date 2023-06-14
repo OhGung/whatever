@@ -13,6 +13,12 @@
 		0332D5372A375606003952B3 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0332D5352A375606003952B3 /* SF-Pro-Display-Medium.otf */; };
 		0332D5392A37561D003952B3 /* Inter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0332D5382A37561D003952B3 /* Inter.ttf */; };
 		0332D53B2A375629003952B3 /* DungGeunMo.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0332D53A2A375629003952B3 /* DungGeunMo.otf */; };
+		0332D5402A387143003952B3 /* NotificationAllowOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332D53F2A387143003952B3 /* NotificationAllowOneView.swift */; };
+		0332D5422A387C7A003952B3 /* NotificationAllowTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332D5412A387C7A003952B3 /* NotificationAllowTwoView.swift */; };
+		0332D5442A38CC27003952B3 /* LocalNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332D5432A38CC27003952B3 /* LocalNotificationHelper.swift */; };
+		0332D5462A38CF9E003952B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332D5452A38CF9E003952B3 /* AppDelegate.swift */; };
+		0332D5482A398308003952B3 /* SettingAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332D5472A398308003952B3 /* SettingAlarmView.swift */; };
+		0332D54D2A3A2520003952B3 /* LogAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332D54C2A3A2520003952B3 /* LogAddView.swift */; };
 		B23202092A38026A005919FE /* CapsuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23202082A38026A005919FE /* CapsuleView.swift */; };
 		B232020B2A38263B005919FE /* RoundedCornersShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = B232020A2A38263B005919FE /* RoundedCornersShape.swift */; };
 		B232020D2A3826F4005919FE /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B232020C2A3826F4005919FE /* View+.swift */; };
@@ -29,7 +35,6 @@
 		B29135522A34DC9E0046F956 /* PeriodListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29135512A34DC9E0046F956 /* PeriodListView.swift */; };
 		B29135542A34DCDB0046F956 /* PeriodDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29135532A34DCDB0046F956 /* PeriodDetailView.swift */; };
 		B29135562A34DD2C0046F956 /* PersistenceController+CycleLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29135552A34DD2C0046F956 /* PersistenceController+CycleLog.swift */; };
-		B29135582A34DD700046F956 /* LogAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29135572A34DD700046F956 /* LogAddView.swift */; };
 		B2AB6EC12A34E3F70022A2E2 /* CycleLog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AB6EC02A34E3F70022A2E2 /* CycleLog+CoreDataProperties.swift */; };
 		B2B27E9C2A3475C4000F2944 /* WhateverApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B27E9B2A3475C4000F2944 /* WhateverApp.swift */; };
 		B2B27EA02A3475C6000F2944 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B27E9F2A3475C6000F2944 /* Assets.xcassets */; };
@@ -68,6 +73,12 @@
 		0332D5382A37561D003952B3 /* Inter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inter.ttf; sourceTree = "<group>"; };
 		0332D53A2A375629003952B3 /* DungGeunMo.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DungGeunMo.otf; sourceTree = "<group>"; };
 		0332D53C2A375730003952B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0332D53F2A387143003952B3 /* NotificationAllowOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAllowOneView.swift; sourceTree = "<group>"; };
+		0332D5412A387C7A003952B3 /* NotificationAllowTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAllowTwoView.swift; sourceTree = "<group>"; };
+		0332D5432A38CC27003952B3 /* LocalNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationHelper.swift; sourceTree = "<group>"; };
+		0332D5452A38CF9E003952B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0332D5472A398308003952B3 /* SettingAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAlarmView.swift; sourceTree = "<group>"; };
+		0332D54C2A3A2520003952B3 /* LogAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogAddView.swift; sourceTree = "<group>"; };
 		B23202082A38026A005919FE /* CapsuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleView.swift; sourceTree = "<group>"; };
 		B232020A2A38263B005919FE /* RoundedCornersShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornersShape.swift; sourceTree = "<group>"; };
 		B232020C2A3826F4005919FE /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
@@ -84,7 +95,6 @@
 		B29135512A34DC9E0046F956 /* PeriodListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodListView.swift; sourceTree = "<group>"; };
 		B29135532A34DCDB0046F956 /* PeriodDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodDetailView.swift; sourceTree = "<group>"; };
 		B29135552A34DD2C0046F956 /* PersistenceController+CycleLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersistenceController+CycleLog.swift"; sourceTree = "<group>"; };
-		B29135572A34DD700046F956 /* LogAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogAddView.swift; sourceTree = "<group>"; };
 		B2AB6EC02A34E3F70022A2E2 /* CycleLog+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CycleLog+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B2B27E982A3475C4000F2944 /* Whatever.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Whatever.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2B27E9B2A3475C4000F2944 /* WhateverApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhateverApp.swift; sourceTree = "<group>"; };
@@ -152,10 +162,10 @@
 		B23202102A382978005919FE /* LogAdd */ = {
 			isa = PBXGroup;
 			children = (
-				B29135572A34DD700046F956 /* LogAddView.swift */,
 				B23202112A382A13005919FE /* PadImageView.swift */,
 				B23202132A383055005919FE /* SegmentedControl.swift */,
 				B23202162A3858A3005919FE /* LogAddViewModel.swift */,
+				0332D54C2A3A2520003952B3 /* LogAddView.swift */,
 			);
 			path = LogAdd;
 			sourceTree = "<group>";
@@ -184,6 +194,8 @@
 				B29135552A34DD2C0046F956 /* PersistenceController+CycleLog.swift */,
 				B2AB6EC02A34E3F70022A2E2 /* CycleLog+CoreDataProperties.swift */,
 				B29135482A34DB850046F956 /* CycleLog+CoreDataClass.swift */,
+				0332D5432A38CC27003952B3 /* LocalNotificationHelper.swift */,
+				0332D5452A38CF9E003952B3 /* AppDelegate.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -197,6 +209,9 @@
 				B29135512A34DC9E0046F956 /* PeriodListView.swift */,
 				B29135532A34DCDB0046F956 /* PeriodDetailView.swift */,
 				B23202102A382978005919FE /* LogAdd */,
+				0332D5472A398308003952B3 /* SettingAlarmView.swift */,
+				0332D53F2A387143003952B3 /* NotificationAllowOneView.swift */,
+				0332D5412A387C7A003952B3 /* NotificationAllowTwoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -416,12 +431,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0332D5402A387143003952B3 /* NotificationAllowOneView.swift in Sources */,
 				B2B27EA52A3475C6000F2944 /* PersistenceController.swift in Sources */,
 				B232021A2A385968005919FE /* BaseViewModel.swift in Sources */,
 				B29135542A34DCDB0046F956 /* PeriodDetailView.swift in Sources */,
 				B232020B2A38263B005919FE /* RoundedCornersShape.swift in Sources */,
+				0332D5442A38CC27003952B3 /* LocalNotificationHelper.swift in Sources */,
 				B29135522A34DC9E0046F956 /* PeriodListView.swift in Sources */,
 				B232021C2A388FF7005919FE /* NinaSaidView.swift in Sources */,
+				0332D5422A387C7A003952B3 /* NotificationAllowTwoView.swift in Sources */,
 				B291354A2A34DB850046F956 /* CycleLog+CoreDataClass.swift in Sources */,
 				B232020D2A3826F4005919FE /* View+.swift in Sources */,
 				B23202122A382A13005919FE /* PadImageView.swift in Sources */,
@@ -432,10 +450,12 @@
 				B23202092A38026A005919FE /* CapsuleView.swift in Sources */,
 				B232020F2A382792005919FE /* Theme.swift in Sources */,
 				B291354E2A34DBE90046F956 /* PadTypeEnum.swift in Sources */,
+				0332D54D2A3A2520003952B3 /* LogAddView.swift in Sources */,
 				B2AB6EC12A34E3F70022A2E2 /* CycleLog+CoreDataProperties.swift in Sources */,
 				0332D5322A375130003952B3 /* Font+.swift in Sources */,
+				0332D5462A38CF9E003952B3 /* AppDelegate.swift in Sources */,
+				0332D5482A398308003952B3 /* SettingAlarmView.swift in Sources */,
 				B29135472A34DA7C0046F956 /* MainView.swift in Sources */,
-				B29135582A34DD700046F956 /* LogAddView.swift in Sources */,
 				0332D5302A3741E5003952B3 /* Color+.swift in Sources */,
 				B2B27E9C2A3475C4000F2944 /* WhateverApp.swift in Sources */,
 				B23202142A383055005919FE /* SegmentedControl.swift in Sources */,
@@ -596,9 +616,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Whatever/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Whatever/Info.plist;
@@ -625,9 +647,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Whatever/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Whatever/Info.plist;
