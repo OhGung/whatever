@@ -18,17 +18,61 @@ struct CalenderView: View {
         ScrollViewReader { scrollView in
             ScrollView(showsIndicators: false) {
                 LazyVStack(alignment: .leading) {
-                    ForEach((currentMonth - loadingCount)...(currentMonth + loadingCount),
-                            id: \.self) { month in
+                    ForEach(months, id: \.self) { month in
                         MonthlyView(month: month,
                                     selectedDay: $selectedDay,
                                     selectedMonth: $selectedMonth)
+                        .id(month)
+                        .onAppear {
+                            if month == months.last {
+                                appendNextMonths(loadingCount)
+                                print(month, months)
+                            }
+                        }
                     }
                 }
             }
             .clipped()
             .onAppear {
+                appendCurrentMonth(currentMonth)
                 scrollView.scrollTo(currentMonth, anchor: .top)
+            }
+            .overlay(alignment: .bottom) {
+                Button(action: {}) {
+                    Text("다음")
+                        .foregroundColor(Color.white)
+                        .font(.title3)
+                        .bold()
+                }
+                .frame(maxWidth: .infinity, maxHeight: 50)
+                .background(Color.vividPurple)
+                .cornerRadius(12)
+                .padding(.horizontal)
+            }
+        }
+    }
+    
+    func appendCurrentMonth(_ currentMonth: Int) {
+        //        for i in (currentMonth - 12)...currentMonth {
+        //            months.append(i)
+        //        }
+        months.append(currentMonth)
+    }
+    
+    func appendNextMonths(_ count: Int) {
+        if let lastMonth = months.last {
+            for i in 1...count {
+                let newMonth = lastMonth + i
+                months.append(newMonth)
+            }
+        }
+    }
+    
+    func prependPreviousMonths(_ count: Int) {
+        if let firstMonth = months.first {
+            for i in 1...count {
+                let newMonth = firstMonth - i
+                months.insert(newMonth, at: 0)
             }
         }
     }
@@ -43,7 +87,7 @@ struct CalenderView: View {
         @State var isCurrentMonth = false
         @State var yearGap = 0
         @State private var newMonth = 0
-
+        
         let columns = [
             GridItem(.flexible()),
             GridItem(.flexible()),
@@ -60,11 +104,13 @@ struct CalenderView: View {
                     .bold()
                     .foregroundColor(isCurrentMonth ? Color.black : Color.gray)
                     .frame(maxWidth: .infinity)
-                    .padding(.top,20)
+                    .padding(.vertical, 10)
+                    .font(.title2)
                 
                 CalenderDayView(isCurrentMonth: $isCurrentMonth)
                 
-                LazyVGrid(columns: columns, spacing: 20) {
+                LazyVGrid(columns: columns, spacing: 22
+                ) {
                     ForEach(1...(dayInMonth + startingDay - 1), id: \.self) { item in
                         if item < startingDay {
                             Text("")
@@ -72,11 +118,43 @@ struct CalenderView: View {
                         else {
                             let dayInt = item - startingDay + 1
                             if month == selectedMonth && dayInt == selectedDay {
-                                getFocusedDay(dayInt, state: "selected")
+                                // selected
+                                Text("\(dayInt)")
+                                    .fontWeight(.heavy)
+                                    .foregroundColor(Color.white)
+                                    .background(Circle().fill(Color.vividPurple)
+                                        .frame(width: 40, height: 40))
+                                    .onTapGesture {
+                                        selectedDay = dayInt
+                                        selectedMonth = month
+                                    }
                             } else if isCurrentMonth && dayInt == customCalenderVM.currentDay {
-                                getFocusedDay(dayInt, state: "today")
+                                // today
+                                Text("\(dayInt)")
+                                    .fontWeight(.heavy)
+                                    .foregroundColor(Color.vividPurple)
+                                    .overlay(alignment: .bottom) {
+                                        Circle()
+                                            .frame(width: 5, height: 5)
+                                            .foregroundColor(Color.vividPurple)
+                                            .offset(y: 5)
+                                    }
+                                    .onTapGesture {
+                                        selectedDay = dayInt
+                                        selectedMonth = month
+                                    }
                             } else {
-                                getFocusedDay(dayInt, state: "")
+                                // default
+                                Text("\(dayInt)")
+                                    .onTapGesture {
+                                        selectedDay = dayInt
+                                        selectedMonth = month
+                                    }
+                                // recorded
+                                //Text("\(dayInt)")
+                                //.foregroundColor(Color.white)
+                                //.background(Circle().fill(Color.lightPurple)
+                                //.frame(width: 40, height: 40))
                             }
                         }
                     }
@@ -98,30 +176,6 @@ struct CalenderView: View {
             startingDay = customCalenderVM.findWeekdayName(date: someMonth!)
             let interval = calendar.dateInterval(of: .month, for: someMonth!)!
             self.dayInMonth = calendar.dateComponents([.day], from: interval.start, to: interval.end).day!
-            
-        }
-        
-        func getFocusedDayColor(_ state: String) -> Color {
-            var color: Color
-            switch state {
-            case "today":
-                color = Color.gray
-            case "selected":
-                color =  Color.purple
-            default:
-                color = Color.clear
-            }
-            return color
-        }
-        
-        func getFocusedDay(_ dayInt: Int, state: String) -> some View {
-            Text("\(dayInt)")
-                .background(Circle().fill(getFocusedDayColor(state))
-                    .frame(width: 40, height: 40))
-                .onTapGesture {
-                    selectedDay = dayInt
-                    selectedMonth = month
-                }
         }
         
         func calculateNewMonth(_ month: Int) {
@@ -143,6 +197,8 @@ struct CalenderView: View {
         }
     }
 }
+
+
 
 struct CalenderView_Previews: PreviewProvider {
     static var previews: some View {

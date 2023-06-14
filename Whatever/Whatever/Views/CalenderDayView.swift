@@ -27,6 +27,7 @@ struct CalenderDayView: View {
             .bold()
             .frame(maxWidth: .infinity)
             .foregroundColor(changeDayColor(day))
+            .font(.footnote)
     }
     
     var body: some View {
@@ -35,7 +36,7 @@ struct CalenderDayView: View {
                 getDayText(day)
             }
         }
-        .padding()
+        .padding([.horizontal])
     }
 }
 
