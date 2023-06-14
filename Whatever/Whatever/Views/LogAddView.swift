@@ -12,7 +12,7 @@ struct LogAddView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var selectedFlowLevel: FlowLevelEnum = .none
     @State private var selectedPadType: PadTypeEnum = .liner
-    
+    //
     var body: some View {
         VStack {
             HStack {
