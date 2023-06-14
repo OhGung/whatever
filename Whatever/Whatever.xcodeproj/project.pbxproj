@@ -18,7 +18,7 @@
 		0332D5442A38CC27003952B3 /* LocalNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332D5432A38CC27003952B3 /* LocalNotificationHelper.swift */; };
 		0332D5462A38CF9E003952B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332D5452A38CF9E003952B3 /* AppDelegate.swift */; };
 		0332D5482A398308003952B3 /* SettingAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332D5472A398308003952B3 /* SettingAlarmView.swift */; };
-		0332D54B2A3A2098003952B3 /* LogAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332D54A2A3A2098003952B3 /* LogAddView.swift */; };
+		0332D54D2A3A2520003952B3 /* LogAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332D54C2A3A2520003952B3 /* LogAddView.swift */; };
 		B23202092A38026A005919FE /* CapsuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23202082A38026A005919FE /* CapsuleView.swift */; };
 		B232020B2A38263B005919FE /* RoundedCornersShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = B232020A2A38263B005919FE /* RoundedCornersShape.swift */; };
 		B232020D2A3826F4005919FE /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B232020C2A3826F4005919FE /* View+.swift */; };
@@ -76,7 +76,7 @@
 		0332D5432A38CC27003952B3 /* LocalNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationHelper.swift; sourceTree = "<group>"; };
 		0332D5452A38CF9E003952B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0332D5472A398308003952B3 /* SettingAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAlarmView.swift; sourceTree = "<group>"; };
-		0332D54A2A3A2098003952B3 /* LogAddView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogAddView.swift; sourceTree = "<group>"; };
+		0332D54C2A3A2520003952B3 /* LogAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogAddView.swift; sourceTree = "<group>"; };
 		B23202082A38026A005919FE /* CapsuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleView.swift; sourceTree = "<group>"; };
 		B232020A2A38263B005919FE /* RoundedCornersShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornersShape.swift; sourceTree = "<group>"; };
 		B232020C2A3826F4005919FE /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
@@ -158,10 +158,10 @@
 		B23202102A382978005919FE /* LogAdd */ = {
 			isa = PBXGroup;
 			children = (
-				0332D54B2A3A2098003952B3 /* LogAddView.swift */,
 				B23202112A382A13005919FE /* PadImageView.swift */,
 				B23202132A383055005919FE /* SegmentedControl.swift */,
 				B23202162A3858A3005919FE /* LogAddViewModel.swift */,
+				0332D54C2A3A2520003952B3 /* LogAddView.swift */,
 			);
 			path = LogAdd;
 			sourceTree = "<group>";
@@ -204,10 +204,7 @@
 				B29135512A34DC9E0046F956 /* PeriodListView.swift */,
 				B29135532A34DCDB0046F956 /* PeriodDetailView.swift */,
 				B23202102A382978005919FE /* LogAdd */,
-				0332D53F2A387143003952B3 /* NotificationAllowOneView.swift */,
-				0332D5412A387C7A003952B3 /* NotificationAllowTwoView.swift */,
 				0332D5472A398308003952B3 /* SettingAlarmView.swift */,
-				0332D54B2A3A2098003952B3 /* LogAddView.swift */,
 				0332D53F2A387143003952B3 /* NotificationAllowOneView.swift */,
 				0332D5412A387C7A003952B3 /* NotificationAllowTwoView.swift */,
 			);
@@ -443,9 +440,9 @@
 				B29135502A34DC110046F956 /* FlowLevelEnum.swift in Sources */,
 				B29135562A34DD2C0046F956 /* PersistenceController+CycleLog.swift in Sources */,
 				B23202092A38026A005919FE /* CapsuleView.swift in Sources */,
-				0332D54B2A3A2098003952B3 /* LogAddView.swift in Sources */,
 				B232020F2A382792005919FE /* Theme.swift in Sources */,
 				B291354E2A34DBE90046F956 /* PadTypeEnum.swift in Sources */,
+				0332D54D2A3A2520003952B3 /* LogAddView.swift in Sources */,
 				B2AB6EC12A34E3F70022A2E2 /* CycleLog+CoreDataProperties.swift in Sources */,
 				0332D5322A375130003952B3 /* Font+.swift in Sources */,
 				0332D5462A38CF9E003952B3 /* AppDelegate.swift in Sources */,
