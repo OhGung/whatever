@@ -37,7 +37,7 @@ struct PeriodListView: View {
         }
         .sheet(isPresented: $isAddingNewCycleLog) {
             NavigationView {
-                LogAddView()
+                LogAddView<LogAddViewModel>(viewModel: .preview)
             }
         }
     }
