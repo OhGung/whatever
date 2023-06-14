@@ -7,21 +7,30 @@
 
 import SwiftUI
 
+struct TimeRecord {
+    var startDate: Date
+    var endDate: Date
+}
+
 struct CalenderView: View {
+    @Environment(\.dismiss) private var dismiss
+    var records: FetchedResults<CycleLog>
+    @State var timeRecords: [String] = [""]
     @State private var months: [Int] = []
+    @State var isLoading = true
+    
     @State var selectedYear = Calendar.current.component(.year, from: Date())
     @State var selectedMonth = Calendar.current.component(.month, from: Date())
     @State var selectedDay = Calendar.current.component(.day, from: Date())
     var currentMonth = Calendar.current.component(.month, from: Date())
     let loadingCount = 5
-        
+    
     var body: some View {
         VStack(spacing: 0) {
             HStack {
                 Text("생리를 하고 있다면 매일 기록하세요")
                     .foregroundColor(Color.white)
                     .font(.subheadline)
-                
             }
             .frame(maxWidth: .infinity)
             .frame(height: 42)
@@ -31,6 +40,7 @@ struct CalenderView: View {
                     LazyVStack(alignment: .leading) {
                         ForEach(months, id: \.self) { month in
                             MonthlyView(month: month,
+                                        timeRecords: timeRecords,
                                         selectedDay: $selectedDay,
                                         selectedMonth: $selectedMonth,
                                         selectedYear: $selectedYear)
@@ -38,16 +48,18 @@ struct CalenderView: View {
                             .onAppear {
                                 if month == months.last {
                                     appendNextMonths(loadingCount)
-                                    //                                    print(month, months)
                                 }
                             }
                         }
                     }
                 }
-                .clipped()
                 .onAppear {
-                    appendCurrentMonth(currentMonth)
-                    scrollView.scrollTo(currentMonth, anchor: .top)
+                    timeRecords = refineRecords()
+                    appendCurrentMonth(currentMonth, scrollView)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                        scrollView.scrollTo(currentMonth, anchor: .top)
+                        isLoading = false
+                    }
                 }
             }
             Button(action: {
@@ -63,10 +75,43 @@ struct CalenderView: View {
                     .cornerRadius(12)
                     .padding(.horizontal)
             }
-            
+        }
+        .clipped()
+        .overlay() {
+            if isLoading {
+                VStack{
+                    ProgressView()
+                        .tint(.vividPurple)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.white)
+            }
+        }
+        .navigationTitle("오늘의 생리 기록")
+        .navigationBarBackButtonHidden()
+        .toolbar{
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    dismiss.callAsFunction()
+                }, label: {
+                    Image(systemName: "chevron.backward")
+                        .foregroundColor(Color.vividPurple)
+                })
+            }
         }
     }
-
+    
+    func refineRecords() -> [String] {
+        var timeRecords: [String] = []
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        for record in records {
+            let date = dateFormatter.string(from: record.wrappedDate)
+            timeRecords.append(date)
+        }
+        print("timeRecords: \(timeRecords)")
+        return timeRecords
+    }
     
     func calculateMonth() -> Int {
         if selectedMonth > 12 {
@@ -78,11 +123,10 @@ struct CalenderView: View {
         }
     }
     
-    func appendCurrentMonth(_ currentMonth: Int) {
-        //        for i in (currentMonth - 12)...currentMonth {
-        //            months.append(i)
-        //        }
-        months.append(currentMonth)
+    func appendCurrentMonth(_ currentMonth: Int, _ scrollView: ScrollViewProxy) {
+        for i in (currentMonth - 12)...currentMonth {
+            months.append(i)
+        }
     }
     
     func appendNextMonths(_ count: Int) {
@@ -105,6 +149,7 @@ struct CalenderView: View {
     
     struct MonthlyView: View {
         var month: Int
+        var timeRecords: [String]
         @Binding var selectedDay: Int
         @Binding var selectedMonth: Int
         @Binding var selectedYear: Int
@@ -153,6 +198,16 @@ struct CalenderView: View {
                                     .onTapGesture {
                                         selectDay(dayInt)
                                     }
+                            } else if checkRecordedDay(dayInt) {
+                                // recorded
+                                Text("\(dayInt)")
+                                    .fontWeight(.heavy)
+                                    .foregroundColor(Color.white)
+                                    .background(Circle().fill(Color.lightPurple)
+                                        .frame(width: 40, height: 40))
+                                    .onTapGesture {
+                                        selectDay(dayInt)
+                                    }
                             } else if isCurrentMonth && dayInt == customCalenderVM.currentDay {
                                 // today
                                 Text("\(dayInt)")
@@ -173,11 +228,6 @@ struct CalenderView: View {
                                     .onTapGesture {
                                         selectDay(dayInt)
                                     }
-                                // recorded
-                                //Text("\(dayInt)")
-                                //.foregroundColor(Color.white)
-                                //.background(Circle().fill(Color.lightPurple)
-                                //.frame(width: 40, height: 40))
                             }
                         }
                     }
@@ -189,7 +239,35 @@ struct CalenderView: View {
                 isCurrentMonth = month == customCalenderVM.currentMonth
                 selectedMonth = customCalenderVM.currentMonth
                 findDaysInMonth(month)
+                
             }
+        }
+        
+        func checkRecordedDay(_ dayInt: Int) -> Bool {
+            var result: Bool = false
+            for record in timeRecords {
+                let startMonthIndex = record.index(record.startIndex, offsetBy: 5)
+                let endMonthIndex = record.index(record.startIndex, offsetBy: 6)
+                let startDayIndex = record.index(record.startIndex, offsetBy: 8)
+                let endDayIndex = record.index(record.startIndex, offsetBy: 9)
+                let yearSubstring = record.prefix(4)
+                let monthSubstring = record[startMonthIndex...endMonthIndex]
+                let daySubstring = record[startDayIndex...endDayIndex]
+                
+                if Int(daySubstring) != dayInt {
+                    result = false
+                    break
+                } else if Int(monthSubstring) != newMonth {
+                    result = false
+                    break
+                } else if Int(yearSubstring) != customCalenderVM.currentYear + yearGap {
+                    result = false
+                    break
+                } else {
+                    result = true
+                }
+            }
+            return result
         }
         
         func selectDay(_ dayInt: Int) {
@@ -231,8 +309,8 @@ struct CalenderView: View {
 
 
 
-struct CalenderView_Previews: PreviewProvider {
-    static var previews: some View {
-        CalenderView()
-    }
-}
+//struct CalenderView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CalenderView(record)
+//    }
+//}
