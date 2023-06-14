@@ -28,32 +28,44 @@ class LocalNotificationHelper {
             }
         )
     }
-    func pushNotification(title: String, body: String, seconds: TimeInterval, identifier: String) {
-        // 알림 내용, 설정
-        let notificationContent = UNMutableNotificationContent()
-        notificationContent.title = title
-        notificationContent.body = body
+    func pushNotification(title: String, body: String, hour: Int, minute: Int, identifier: String) {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
 
-        // 조건(시간, 반복)
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: seconds, repeats: false)
-        
-        // 요청
-        let request = UNNotificationRequest(identifier: identifier,
-                                            content: notificationContent,
-                                            trigger: trigger)
-
-        // 알림 등록
-        UNUserNotificationCenter.current().add(request) { error in
-            if let error = error {
-                print("Notification Error: ", error)
+            if settings.authorizationStatus == UNAuthorizationStatus.authorized {
+                // 알림 내용, 설정
+                let notificationContent = UNMutableNotificationContent()
+                notificationContent.title = title
+                notificationContent.body = body
+                
+                // 조건(시간, 반복)
+                var date = DateComponents()
+                date.hour = hour
+                date.minute = minute
+                
+                let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
+                
+                // 요청
+                let request = UNNotificationRequest(identifier: identifier,
+                                                    content: notificationContent,
+                                                    trigger: trigger)
+                
+                // 알림 등록
+                UNUserNotificationCenter.current().add(request) { error in
+                    if let error = error {
+                        print("Notification Error: ", error)
+                    }
+                }
+                
+                //알림 등록 되었는지 확인
+                UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
+                    print("===== Pending =====")
+                    for request in requests {
+                        print(request)
+                    }
+                }
             }
-        }
-        
-        //알림 등록 되었는지 확인
-        UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
-            print("===== Pending =====")
-            for request in requests {
-                print(request)
+            else {
+                UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
             }
         }
     }
