@@ -9,46 +9,72 @@ import SwiftUI
 
 struct CalenderView: View {
     @State private var months: [Int] = []
-    @State var selectedMonth = 0
-    @State var selectedDay = 0
+    @State var selectedYear = Calendar.current.component(.year, from: Date())
+    @State var selectedMonth = Calendar.current.component(.month, from: Date())
+    @State var selectedDay = Calendar.current.component(.day, from: Date())
     var currentMonth = Calendar.current.component(.month, from: Date())
     let loadingCount = 5
-    
+        
     var body: some View {
-        ScrollViewReader { scrollView in
-            ScrollView(showsIndicators: false) {
-                LazyVStack(alignment: .leading) {
-                    ForEach(months, id: \.self) { month in
-                        MonthlyView(month: month,
-                                    selectedDay: $selectedDay,
-                                    selectedMonth: $selectedMonth)
-                        .id(month)
-                        .onAppear {
-                            if month == months.last {
-                                appendNextMonths(loadingCount)
-                                print(month, months)
+        VStack(spacing: 0) {
+            HStack {
+                Text("생리를 하고 있다면 매일 기록하세요")
+                    .foregroundColor(Color.white)
+                    .font(.subheadline)
+                
+            }
+            .frame(maxWidth: .infinity)
+            .frame(height: 42)
+            .background(Color.vividPurple.opacity(0.37))
+            ScrollViewReader { scrollView in
+                ScrollView(showsIndicators: false) {
+                    LazyVStack(alignment: .leading) {
+                        ForEach(months, id: \.self) { month in
+                            MonthlyView(month: month,
+                                        selectedDay: $selectedDay,
+                                        selectedMonth: $selectedMonth,
+                                        selectedYear: $selectedYear)
+                            .id(month)
+                            .onAppear {
+                                if month == months.last {
+                                    appendNextMonths(loadingCount)
+                                    //                                    print(month, months)
+                                }
                             }
                         }
                     }
                 }
-            }
-            .clipped()
-            .onAppear {
-                appendCurrentMonth(currentMonth)
-                scrollView.scrollTo(currentMonth, anchor: .top)
-            }
-            .overlay(alignment: .bottom) {
-                Button(action: {}) {
-                    Text("다음")
-                        .foregroundColor(Color.white)
-                        .font(.title3)
-                        .bold()
+                .clipped()
+                .onAppear {
+                    appendCurrentMonth(currentMonth)
+                    scrollView.scrollTo(currentMonth, anchor: .top)
                 }
-                .frame(maxWidth: .infinity, maxHeight: 50)
-                .background(Color.vividPurple)
-                .cornerRadius(12)
-                .padding(.horizontal)
             }
+            Button(action: {
+                let newMonth = calculateMonth()
+                print("\(selectedYear)-\(String(format: "%02d", newMonth))-\(String(format: "%02d", selectedDay))")
+            }) {
+                Text("다음")
+                    .foregroundColor(Color.white)
+                    .font(.title3)
+                    .bold()
+                    .frame(maxWidth: .infinity, maxHeight: 50)
+                    .background(Color.vividPurple)
+                    .cornerRadius(12)
+                    .padding(.horizontal)
+            }
+            
+        }
+    }
+
+    
+    func calculateMonth() -> Int {
+        if selectedMonth > 12 {
+            return selectedMonth % 12 == 0 ? 12 : selectedMonth % 12
+        } else if selectedMonth < 1 {
+            return 12 + selectedMonth % 12
+        } else {
+            return selectedMonth
         }
     }
     
@@ -81,6 +107,7 @@ struct CalenderView: View {
         var month: Int
         @Binding var selectedDay: Int
         @Binding var selectedMonth: Int
+        @Binding var selectedYear: Int
         @StateObject var customCalenderVM = CalendarViewModel()
         @State var dayInMonth = 30
         @State var startingDay = 0
@@ -109,15 +136,14 @@ struct CalenderView: View {
                 
                 CalenderDayView(isCurrentMonth: $isCurrentMonth)
                 
-                LazyVGrid(columns: columns, spacing: 22
-                ) {
+                LazyVGrid(columns: columns, spacing: 22) {
                     ForEach(1...(dayInMonth + startingDay - 1), id: \.self) { item in
                         if item < startingDay {
                             Text("")
                         }
                         else {
                             let dayInt = item - startingDay + 1
-                            if month == selectedMonth && dayInt == selectedDay {
+                            if customCalenderVM.currentYear + yearGap == selectedYear && month == selectedMonth && dayInt == selectedDay {
                                 // selected
                                 Text("\(dayInt)")
                                     .fontWeight(.heavy)
@@ -125,8 +151,7 @@ struct CalenderView: View {
                                     .background(Circle().fill(Color.vividPurple)
                                         .frame(width: 40, height: 40))
                                     .onTapGesture {
-                                        selectedDay = dayInt
-                                        selectedMonth = month
+                                        selectDay(dayInt)
                                     }
                             } else if isCurrentMonth && dayInt == customCalenderVM.currentDay {
                                 // today
@@ -140,15 +165,13 @@ struct CalenderView: View {
                                             .offset(y: 5)
                                     }
                                     .onTapGesture {
-                                        selectedDay = dayInt
-                                        selectedMonth = month
+                                        selectDay(dayInt)
                                     }
                             } else {
                                 // default
                                 Text("\(dayInt)")
                                     .onTapGesture {
-                                        selectedDay = dayInt
-                                        selectedMonth = month
+                                        selectDay(dayInt)
                                     }
                                 // recorded
                                 //Text("\(dayInt)")
@@ -169,6 +192,12 @@ struct CalenderView: View {
             }
         }
         
+        func selectDay(_ dayInt: Int) {
+            selectedYear = customCalenderVM.currentYear + yearGap
+            selectedMonth = month
+            selectedDay = dayInt
+        }
+        
         func findDaysInMonth(_ month: Int) {
             let calendar = Calendar.current
             let difference = month - customCalenderVM.currentMonth
@@ -180,7 +209,7 @@ struct CalenderView: View {
         
         func calculateNewMonth(_ month: Int) {
             if month > 12 {
-                newMonth = month % 12
+                newMonth = month % 12 == 0 ? 12 : month % 12
             } else if month < 1 {
                 newMonth = 12 + month % 12
             } else {
@@ -190,6 +219,8 @@ struct CalenderView: View {
         
         func calculateYearGap(_ month: Int) {
             if month < 0 {
+                yearGap = month / 12 - 1
+            } else if month % 12 == 0 {
                 yearGap = month / 12 - 1
             } else {
                 yearGap = month / 12
