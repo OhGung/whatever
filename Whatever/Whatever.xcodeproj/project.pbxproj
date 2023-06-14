@@ -17,6 +17,7 @@
 		0332D5422A387C7A003952B3 /* NotificationAllowTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332D5412A387C7A003952B3 /* NotificationAllowTwoView.swift */; };
 		0332D5442A38CC27003952B3 /* LocalNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332D5432A38CC27003952B3 /* LocalNotificationHelper.swift */; };
 		0332D5462A38CF9E003952B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332D5452A38CF9E003952B3 /* AppDelegate.swift */; };
+		0332D5482A398308003952B3 /* SettingAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332D5472A398308003952B3 /* SettingAlarmView.swift */; };
 		B29135472A34DA7C0046F956 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29135462A34DA7C0046F956 /* MainView.swift */; };
 		B291354A2A34DB850046F956 /* CycleLog+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29135482A34DB850046F956 /* CycleLog+CoreDataClass.swift */; };
 		B291354E2A34DBE90046F956 /* PadTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B291354D2A34DBE90046F956 /* PadTypeEnum.swift */; };
@@ -65,6 +66,7 @@
 		0332D5412A387C7A003952B3 /* NotificationAllowTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAllowTwoView.swift; sourceTree = "<group>"; };
 		0332D5432A38CC27003952B3 /* LocalNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationHelper.swift; sourceTree = "<group>"; };
 		0332D5452A38CF9E003952B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0332D5472A398308003952B3 /* SettingAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAlarmView.swift; sourceTree = "<group>"; };
 		B29135462A34DA7C0046F956 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		B29135482A34DB850046F956 /* CycleLog+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CycleLog+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B291354D2A34DBE90046F956 /* PadTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadTypeEnum.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				B29135572A34DD700046F956 /* LogAddView.swift */,
 				0332D53F2A387143003952B3 /* NotificationAllowOneView.swift */,
 				0332D5412A387C7A003952B3 /* NotificationAllowTwoView.swift */,
+				0332D5472A398308003952B3 /* SettingAlarmView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				B2AB6EC12A34E3F70022A2E2 /* CycleLog+CoreDataProperties.swift in Sources */,
 				0332D5322A375130003952B3 /* Font+.swift in Sources */,
 				0332D5462A38CF9E003952B3 /* AppDelegate.swift in Sources */,
+				0332D5482A398308003952B3 /* SettingAlarmView.swift in Sources */,
 				B29135472A34DA7C0046F956 /* MainView.swift in Sources */,
 				B29135582A34DD700046F956 /* LogAddView.swift in Sources */,
 				0332D5302A3741E5003952B3 /* Color+.swift in Sources */,
