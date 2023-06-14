@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct WhateverApp: App {
     let persistenceController = PersistenceController.shared
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     init() {
             Font.registerFonts()

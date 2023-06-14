@@ -43,20 +43,11 @@ struct NotificationAllowTwoView: View {
             }
             Spacer()
             Button(action: {
-                requestNotificationPermission()
+                LocalNotificationHelper.shared.setAuthorization()
             }) {
                 Image("NextButtonActive")
             }
         }
-    }
-    func requestNotificationPermission(){
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound,.badge], completionHandler: {didAllow,Error in
-            if didAllow {
-                print("Push: 권한 허용")
-            } else {
-                print("Push: 권한 거부")
-            }
-        })
     }
 }
 
