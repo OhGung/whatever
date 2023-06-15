@@ -64,8 +64,7 @@ struct CalenderView: View {
             }
             
             NavigationLink(destination: LogAddView(
-//                viewModel: LogAddViewModel(cycleLog: getSelectedDateCycleLog(), date: convertToDate())
-                viewModel: LogAddViewModel()
+                viewModel: LogAddViewModel(cycleLog: getSelectedDateCycleLog(), date: convertToDate())
             )) {
                 Text("다음")
                     .foregroundColor(Color.white)
