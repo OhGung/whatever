@@ -47,6 +47,7 @@ struct CalenderView: View {
                             .id(month)
                             .onAppear {
                                 if month == months.last {
+                                    prependPreviousMonths(loadingCount)
                                     appendNextMonths(loadingCount)
                                 }
                             }
@@ -55,11 +56,12 @@ struct CalenderView: View {
                 }
                 .onAppear {
                     timeRecords = refineRecords()
-                    appendCurrentMonth(currentMonth, scrollView)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-                        scrollView.scrollTo(currentMonth, anchor: .top)
-                        isLoading = false
-                    }
+                    appendCurrentMonth()
+//                    appendCurrentMonth(currentMonth, scrollView)
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+//                        scrollView.scrollTo(currentMonth, anchor: .top)
+//                        isLoading = false
+//                    }
                 }
             }
             
@@ -77,16 +79,16 @@ struct CalenderView: View {
             }
         }
         .clipped()
-        .overlay() {
-            if isLoading {
-                VStack{
-                    ProgressView()
-                        .tint(.vividPurple)
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.white)
-            }
-        }
+//        .overlay() {
+//            if isLoading {
+//                VStack{
+//                    ProgressView()
+//                        .tint(.vividPurple)
+//                }
+//                .frame(maxWidth: .infinity, maxHeight: .infinity)
+//                .background(Color.white)
+//            }
+//        }
         .navigationTitle("오늘의 생리 기록")
         .navigationBarBackButtonHidden()
         .toolbar{
@@ -146,10 +148,14 @@ struct CalenderView: View {
         }
     }
     
-    func appendCurrentMonth(_ currentMonth: Int, _ scrollView: ScrollViewProxy) {
-        for i in (currentMonth - 12)...currentMonth {
-            months.append(i)
-        }
+//    func appendCurrentMonth(_ currentMonth: Int, _ scrollView: ScrollViewProxy) {
+//        for i in (currentMonth - 12)...currentMonth {
+//            months.append(i)
+//        }
+//    }
+    
+    func appendCurrentMonth() {
+        months.append(currentMonth)
     }
     
     func appendNextMonths(_ count: Int) {
@@ -161,11 +167,20 @@ struct CalenderView: View {
         }
     }
     
+//    func prependPreviousMonths(_ count: Int) {
+//        if let firstMonth = months.first {
+//            for i in 1...count {
+//                let newMonth = firstMonth - i
+//                months.insert(newMonth, at: 0)
+//            }
+//        }
+//    }
+    
     func prependPreviousMonths(_ count: Int) {
-        if let firstMonth = months.first {
+        if let firstMonth = months.last {
             for i in 1...count {
                 let newMonth = firstMonth - i
-                months.insert(newMonth, at: 0)
+                months.append(newMonth)
             }
         }
     }

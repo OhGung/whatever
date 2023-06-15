@@ -15,44 +15,70 @@ struct DailyCheckView: View {
     var body: some View {
         HStack{
             VStack{
-                Text("\(month)월 \(day)일")//과거 데이터 받아와서 바꿔야함
-                    .font(.system(size: 14))
-                RoundedRectangle(cornerRadius: 25)
-                    .foregroundColor(Color(red: 217/255,green: 217/255, blue: 217/255))
-                    .frame(width: 65 ,height:120)
+                Text("6월 16일")
+                    .font(.system(size: 11))
+                    .bold()
+                ZStack(alignment: .bottom) {
+                    RoundedRectangle(cornerRadius: 25)
+                        .foregroundColor(.mediumGray)
+                        .frame(width: 65 ,height:120)
+                    RoundedRectangle(cornerRadius: 20)
+                        .frame(width : 65, height :64)
+                        .foregroundColor(.vividPurple)
+                }
                 Text("1일차")
+                    .fontWeight(.heavy)
             }
             
             VStack{
-                Text("\(month)월 \(day+1)일")//과거 데이터 받아와서 바꿔야함
-                    .font(.system(size: 14))
+                Text("6월 16일")
+                    .font(.system(size: 11))
+                    .bold()
+                    .foregroundColor(Color.clear)
                 RoundedRectangle(cornerRadius: 25)
-                    .foregroundColor(Color(red: 217/255,green: 217/255, blue: 217/255))                    .frame(width: 65 ,height:120)
+                    .foregroundColor(.mediumGray)
+                    .frame(width: 65 ,height:120)
                 Text("2일차")
+                    .foregroundColor(.mediumGray)
+                    .fontWeight(.heavy)
             }
             
             VStack{
-                Text("\(month)월 \(day+2)일")//과거 데이터 받아와서 바꿔야함
-                    .font(.system(size: 14))
+                Text("6월 16일")
+                    .font(.system(size: 11))
+                    .bold()
+                    .foregroundColor(Color.clear)
                 RoundedRectangle(cornerRadius: 25)
-                    .foregroundColor(Color(red: 217/255,green: 217/255, blue: 217/255))                    .frame(width: 65 ,height:120)
+                    .foregroundColor(.mediumGray)
+                    .frame(width: 65 ,height:120)
                 Text("3일차")
-            }
+                    .foregroundColor(.mediumGray)
+                .fontWeight(.heavy)            }
             
             VStack{
-                Text("\(month)월 \(day+3)일")//과거 데이터 받아와서 바꿔야함
-                    .font(.system(size: 14))
+                Text("6월 16일")
+                    .font(.system(size: 11))
+                    .bold()
+                    .foregroundColor(Color.clear)
                 RoundedRectangle(cornerRadius: 25)
-                    .foregroundColor(Color(red: 217/255,green: 217/255, blue: 217/255))                    .frame(width: 65 ,height:120)
+                    .foregroundColor(.mediumGray)
+                    .frame(width: 65 ,height:120)
                 Text("4일차")
+                    .foregroundColor(.mediumGray)
+                    .fontWeight(.heavy)
             }
             
             VStack{
-                Text("\(month)월 \(day+4)일")//과거 데이터 받아와서 바꿔야함
-                    .font(.system(size: 14))
+                Text("6월 16일")
+                    .font(.system(size: 11))
+                    .bold()
+                    .foregroundColor(Color.clear)
                 RoundedRectangle(cornerRadius: 25)
-                    .foregroundColor(Color(red: 217/255,green: 217/255, blue: 217/255))                    .frame(width: 65 ,height:120)
+                    .foregroundColor(.mediumGray)
+                    .frame(width: 65 ,height:120)
                 Text("5일차")
+                    .foregroundColor(.mediumGray)
+                    .fontWeight(.heavy)
             }
             
             

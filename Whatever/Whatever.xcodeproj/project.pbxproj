@@ -185,6 +185,15 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		51C5606D2A3B8C760074B62E /* Calender */ = {
+			isa = PBXGroup;
+			children = (
+				51C560632A38210D0074B62E /* CalenderView.swift */,
+				51C560652A38223F0074B62E /* CalenderDayView.swift */,
+			);
+			path = Calender;
+			sourceTree = "<group>";
+		};
 		B23202072A38025D005919FE /* Component */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +251,7 @@
 		B29135452A34DA600046F956 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				51C5606D2A3B8C760074B62E /* Calender */,
 				B23202072A38025D005919FE /* Component */,
 				B29135462A34DA7C0046F956 /* MainView.swift */,
 				0332D5582A3B8398003952B3 /* PeriodChartView.swift */,
@@ -254,8 +264,6 @@
 				0332D5472A398308003952B3 /* SettingAlarmView.swift */,
 				0332D53F2A387143003952B3 /* NotificationAllowOneView.swift */,
 				0332D5412A387C7A003952B3 /* NotificationAllowTwoView.swift */,
-				51C560632A38210D0074B62E /* CalenderView.swift */,
-				51C560652A38223F0074B62E /* CalenderDayView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

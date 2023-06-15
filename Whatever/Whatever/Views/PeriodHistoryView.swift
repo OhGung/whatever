@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct PeriodHistoryView: View {
+    @Environment(\.dismiss) private var dismiss
     @State var period : [String] = ["2023년 6월 4일 ~ 6월 8일", "2023년 5월 10일 ~ 5월 14일", "2023년 4월 17일 ~ 4월 21일", "2023년 3월 22일 ~ 3월 26일"]
     @State var allPeriod : [(Int, Int)] = [(6, 4), (5, 10), (4, 17), (3, 22), (6, 8)]
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             VStack {
                 ZStack {
                     RoundedCornersShape(
@@ -62,6 +63,18 @@ struct PeriodHistoryView: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden()
+        .toolbar{
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    dismiss.callAsFunction()
+                }, label: {
+                    Image(systemName: "chevron.backward")
+                        .foregroundColor(Color.vividPurple)
+                })
+            }
+        }
+
     }
 }
 
