@@ -18,7 +18,7 @@ struct CalenderView: View {
     @State var timeRecords: [String] = [""]
     @State private var months: [Int] = []
     @State var isLoading = true
-    //
+    
     @State var selectedYear = Calendar.current.component(.year, from: Date())
     @State var selectedMonth = Calendar.current.component(.month, from: Date())
     @State var selectedDay = Calendar.current.component(.day, from: Date())
@@ -62,10 +62,11 @@ struct CalenderView: View {
                     }
                 }
             }
-            Button(action: {
-                let newMonth = calculateMonth()
-                print("\(selectedYear)-\(String(format: "%02d", newMonth))-\(String(format: "%02d", selectedDay))")
-            }) {
+            
+            NavigationLink(destination: LogAddView(
+//                viewModel: LogAddViewModel(cycleLog: getSelectedDateCycleLog(), date: convertToDate())
+                viewModel: LogAddViewModel()
+            )) {
                 Text("다음")
                     .foregroundColor(Color.white)
                     .font(.title3)
@@ -101,6 +102,30 @@ struct CalenderView: View {
         }
     }
     
+    func getSelectedDateCycleLog() -> CycleLog? {
+        let newMonth = calculateMonth()
+        let selectedDate = "\(selectedYear)-\(String(format: "%02d", newMonth))-\(String(format: "%02d", selectedDay))"
+        var result: CycleLog?
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        for record in records {
+            let date = dateFormatter.string(from: record.wrappedDate)
+            if date.prefix(10) == selectedDate {
+                result = record
+                break
+            }
+        }
+        return result
+    }
+    
+    func convertToDate() -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let newMonth = calculateMonth()
+        return dateFormatter.date(from: "\(selectedYear)-\(String(format: "%02d", newMonth))-\(String(format: "%02d", selectedDay))")!
+    }
+    
     func refineRecords() -> [String] {
         var timeRecords: [String] = []
         let dateFormatter = DateFormatter()
@@ -109,7 +134,6 @@ struct CalenderView: View {
             let date = dateFormatter.string(from: record.wrappedDate)
             timeRecords.append(date)
         }
-        print("timeRecords: \(timeRecords)")
         return timeRecords
     }
     
