@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingAlarmView: View {
     @ObservedObject private var notiHelper = LocalNotificationHelper.shared
+    @Environment(\.dismiss) private var dismiss
     var body: some View {
         List {
             HStack {
@@ -17,6 +18,18 @@ struct SettingAlarmView: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden()
+        .toolbar{
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    dismiss.callAsFunction()
+                }, label: {
+                    Image(systemName: "chevron.backward")
+                        .foregroundColor(Color.vividPurple)
+                })
+            }
+        }
+
     }
 }
 
