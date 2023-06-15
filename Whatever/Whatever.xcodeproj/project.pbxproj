@@ -22,6 +22,9 @@
 		B23202172A3858A3005919FE /* LogAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23202162A3858A3005919FE /* LogAddViewModel.swift */; };
 		B232021A2A385968005919FE /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23202192A385968005919FE /* BaseViewModel.swift */; };
 		B232021C2A388FF7005919FE /* NinaSaidView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B232021B2A388FF7005919FE /* NinaSaidView.swift */; };
+		B23202262A39EFA7005919FE /* LogAddDoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23202252A39EFA7005919FE /* LogAddDoneView.swift */; };
+		B23202282A39F15F005919FE /* TipBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23202272A39F15F005919FE /* TipBoxView.swift */; };
+		B232022A2A39F5E7005919FE /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23202292A39F5E7005919FE /* Date+.swift */; };
 		B29135472A34DA7C0046F956 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29135462A34DA7C0046F956 /* MainView.swift */; };
 		B291354A2A34DB850046F956 /* CycleLog+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29135482A34DB850046F956 /* CycleLog+CoreDataClass.swift */; };
 		B291354E2A34DBE90046F956 /* PadTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B291354D2A34DBE90046F956 /* PadTypeEnum.swift */; };
@@ -75,6 +78,9 @@
 		B23202162A3858A3005919FE /* LogAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogAddViewModel.swift; sourceTree = "<group>"; };
 		B23202192A385968005919FE /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		B232021B2A388FF7005919FE /* NinaSaidView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NinaSaidView.swift; sourceTree = "<group>"; };
+		B23202252A39EFA7005919FE /* LogAddDoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogAddDoneView.swift; sourceTree = "<group>"; };
+		B23202272A39F15F005919FE /* TipBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipBoxView.swift; sourceTree = "<group>"; };
+		B23202292A39F5E7005919FE /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		B29135462A34DA7C0046F956 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		B29135482A34DB850046F956 /* CycleLog+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CycleLog+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B291354D2A34DBE90046F956 /* PadTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadTypeEnum.swift; sourceTree = "<group>"; };
@@ -149,9 +155,12 @@
 			isa = PBXGroup;
 			children = (
 				B29135572A34DD700046F956 /* LogAddView.swift */,
+				B23202252A39EFA7005919FE /* LogAddDoneView.swift */,
 				B23202112A382A13005919FE /* PadImageView.swift */,
 				B23202132A383055005919FE /* SegmentedControl.swift */,
 				B23202162A3858A3005919FE /* LogAddViewModel.swift */,
+				B23202272A39F15F005919FE /* TipBoxView.swift */,
+				B23202292A39F5E7005919FE /* Date+.swift */,
 			);
 			path = LogAdd;
 			sourceTree = "<group>";
@@ -421,8 +430,11 @@
 				B23202122A382A13005919FE /* PadImageView.swift in Sources */,
 				B29135502A34DC110046F956 /* FlowLevelEnum.swift in Sources */,
 				B29135562A34DD2C0046F956 /* PersistenceController+CycleLog.swift in Sources */,
+				B23202262A39EFA7005919FE /* LogAddDoneView.swift in Sources */,
 				B23202092A38026A005919FE /* CapsuleView.swift in Sources */,
+				B232022A2A39F5E7005919FE /* Date+.swift in Sources */,
 				B232020F2A382792005919FE /* Theme.swift in Sources */,
+				B23202282A39F15F005919FE /* TipBoxView.swift in Sources */,
 				B291354E2A34DBE90046F956 /* PadTypeEnum.swift in Sources */,
 				B2AB6EC12A34E3F70022A2E2 /* CycleLog+CoreDataProperties.swift in Sources */,
 				0332D5322A375130003952B3 /* Font+.swift in Sources */,
