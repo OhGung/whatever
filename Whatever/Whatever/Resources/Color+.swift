@@ -16,4 +16,7 @@ extension Color {
     static let dimGray = Color("dimGray")
     static let vividPurple = Color("vividPurple")
     static let vividYellow = Color("vividYellow")
+    static let lighterPurple = Color("lighterPurple")
+    static let mediumLightPurple = Color("mediumLightPurple")
+    
 }

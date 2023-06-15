@@ -38,7 +38,6 @@ struct MainView: View {
     
     
     var body: some View {
-        //PeriodListView(items:cycleLogs)
         NavigationStack{
             ZStack{
                 VStack(spacing: 0){
@@ -110,7 +109,7 @@ struct MainView: View {
 //                                VStack(spacing: 0) {
 //                                    Text("오늘 하루 필요한 생리대는?")
 //                                        .font(.subheadline)
-//                                    
+//
 //                                    Text("기록하면 알려줄게요") //정보 받아와서 알려주기
 //                                        .font(.system(size: 32, weight: .bold))
 //                                        .foregroundColor(.vividPurple)
@@ -120,8 +119,8 @@ struct MainView: View {
 //                                            .stroke(Color.gray)
 //                                            .foregroundColor(.white)
 //                                            .frame(width: 252, height: 70)
-//                                        
-//                                        
+//
+//
 //                                        VStack{
 //                                            RoundedRectangle(cornerRadius: 30)
 //                                                .foregroundColor(.lightPurple)
@@ -132,9 +131,9 @@ struct MainView: View {
 //                                                        .offset(x:0, y:10)
 //                                                        .foregroundColor(.white)
 //                                                        .font(.system(size: 13, weight: .bold))
-//                                                    
+//
 //                                                )
-//                                            
+//
 //                                            Text("아직 알려줄 수 있는 팁이 없어요")
 //                                                .frame(width: 235, height: 50)
 //                                                .minimumScaleFactor(0.5)
@@ -144,7 +143,7 @@ struct MainView: View {
 //                                        }
 //                                    }
 //                                }
-//                                
+//
 //                            }
                             
                             
@@ -162,7 +161,7 @@ struct MainView: View {
                                             .foregroundColor(.vividPurple)
                                             .padding(.bottom, 8)
                                         ZStack{
-                                            RoundedRectangle(cornerRadius: 50)
+                                            RoundedRectangle(cornerRadius: 10)
                                                 .stroke(Color.gray)
                                                 .foregroundColor(.white)
                                                 .frame(width: 252, height: 70)
@@ -184,7 +183,7 @@ struct MainView: View {
                                                 Text("\(ment[Int.random(in: 0...4)])")
                                                     .frame(width: 235, height: 50)
                                                     .minimumScaleFactor(0.5)
-                                                    .font(.system(size:13))
+                                                    .font(.system(size:12))
                                                     .foregroundColor(.gray)
                                                     .multilineTextAlignment(.center)
                                             }
@@ -200,9 +199,16 @@ struct MainView: View {
                                     VStack(spacing: 5) {
                                         Text("지금 생리를 어떻게 하고 있을까요?")
                                             .font(.subheadline)
-                                        DailyCheckView()
-                                            .scaleEffect(0.9)
-                                            .padding(.horizontal)
+                                        NavigationLink {
+                                            PeriodHistoryView()
+                                        } label: {
+                                            DailyCheckView()
+                                                .scaleEffect(0.9)
+                                                .padding(.horizontal)
+                                                .accentColor(Color.black)
+                                        }
+
+                                        
                                     }
                                 }
                             }
