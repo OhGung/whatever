@@ -27,6 +27,19 @@ extension PersistenceController {
     
     
     // MARK: - Add Cycle Log
+    func addLog(date: Date, padType: PadTypeEnum, flowLevel: FlowLevelEnum) {
+        let viewContext = container.viewContext
+        let cycleLog = CycleLog(context: viewContext)
+        cycleLog.timestamp = date
+        cycleLog.flowLevel = Int64(flowLevel.rawValue)
+        cycleLog.padType = Int64(padType.rawValue)
+        do {
+            try viewContext.save()
+        } catch {
+            print(error)
+        }
+    }
+    
     func addLog(padType: PadTypeEnum, flowLevel: FlowLevelEnum) {
         let viewContext = container.viewContext
         let cycleLog = CycleLog(context: viewContext)

@@ -14,55 +14,23 @@ struct LogAddView<
     
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
+    
     @State private var selectedFlowLevel: FlowLevelEnum = .none
     @State private var selectedPadType: PadTypeEnum = .liner
     
     var body: some View {
         VStack(alignment: .leading) {
-            PadImageView()
+            PadImageView(imageName: viewModel.imageName)
             NinaSaidView(content: viewModel.whatNinaSaid)
-            SegmentedControl()
-            tipBox
+            SegmentedControl(viewModel: viewModel, selected: 0, titles: viewModel.titles)
+            TipBoxView(title: "TIP", content: "아무말")
             nextButton
-        }
-        
-    }
-    
-    var tipBox: some View {
-        CapsuleView(
-            radius: Theme.radii.r2,
-            borderWidth: 1,
-            borderColor: .mediumGray
-        ) {
-            VStack {
-                tipLabel
-                Text("아무말")
-            }
-            .padding()
-            .frame(maxWidth: .infinity)
-        }
-        .padding()
-    }
-    
-    var tipLabel: some View {
-        CapsuleView(radius:Theme.radii.r5) {
-            Text("TIP")
-                .foregroundColor(.white)
-                .font(.callout)
-                .bold()
-                .padding(.vertical, 3)
-                .padding(.horizontal)
-                .background(Color.lightPurple)
         }
     }
     
     var nextButton: some View {
         Button {
-            print("nextButtonTapped")
-//            withAnimation {
-//                addCycleLog()
-//            }
-//            dismiss()
+            viewModel.goNextPhase()
         } label: {
             CapsuleView(
                 radius:Theme.radii.r3
