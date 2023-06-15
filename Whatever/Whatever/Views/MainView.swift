@@ -16,8 +16,28 @@ struct MainView: View {
     
     var body: some View {
         PeriodListView(items:cycleLogs)
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
