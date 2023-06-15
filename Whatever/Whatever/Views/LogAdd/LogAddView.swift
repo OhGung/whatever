@@ -19,18 +19,53 @@ struct LogAddView<
     @State private var selectedPadType: PadTypeEnum = .liner
     
     var body: some View {
-        VStack(alignment: .leading) {
-            PadImageView(imageName: viewModel.imageName)
-            NinaSaidView(content: viewModel.whatNinaSaid)
-            SegmentedControl(viewModel: viewModel, selected: 0, titles: viewModel.titles)
-            TipBoxView(title: "TIP", content: "아무말")
-            nextButton
+        if viewModel.isPhaseDone {
+            LogAddDoneView(viewModel: viewModel)
+        } else {
+            VStack(spacing: 18) {
+                currentDateView
+                PadImageView(
+                    imageName: viewModel.imageName
+                )
+                .frame(width:350, height:294)
+                
+                VStack(spacing: 15) {
+                    HStack {
+                        NinaSaidView(
+                            content: viewModel.whatNinaSaid
+                        )
+                        Spacer()
+                    }
+                    SegmentedControl(
+                        viewModel: viewModel,
+                        titles: viewModel.titles
+                    )
+                        .frame(height: 70)
+                }
+                .frame(width:344)
+                
+                TipBoxView(title: "TIP", content: viewModel.tipDetail, type: .tip)
+                    .frame(width: 350, height: 92)
+                nextButton
+            }
+        }
+    }
+    
+    var currentDateView: some View {
+        HStack {
+            Spacer()
+            VStack(alignment: .center) {
+                LightPurpleCapsuleLabel(content: "기록날짜")
+                Text(viewModel.date.fullString)
+                    .font(.title.bold())
+            }
+            Spacer()
         }
     }
     
     var nextButton: some View {
         Button {
-            viewModel.goNextPhase()
+            viewModel.goToNextPhase()
         } label: {
             CapsuleView(
                 radius:Theme.radii.r3
@@ -42,8 +77,8 @@ struct LogAddView<
                     .frame(maxWidth: .infinity)
                     .background(Color.vividPurple)
             }
-            .padding()
         }
+        .frame(width: 350, height: 50)
     }
     
     

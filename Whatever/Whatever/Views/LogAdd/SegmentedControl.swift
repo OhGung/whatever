@@ -11,9 +11,8 @@ struct SegmentedControl<
     ViewModel: LogAddViewModelProtocol
 >: View {
     @ObservedObject var viewModel: ViewModel
-    @State var selected: Int
     var titles: [String]
-    private let circleSize: CGFloat = 40
+    private let circleSize: CGFloat = 28
     
     var body: some View {
         circles
@@ -28,16 +27,15 @@ struct SegmentedControl<
         VStack {
             HStack(alignment: .top) {
                 ForEach(titles.indices, id: \.self) { i in
-                    VStack {
+                    VStack(spacing:8) {
                         circle(selected: viewModel.selectedIndex == i)
                             .onTapGesture {
-//                                withAnimation {
-                                    viewModel.choose(i)
-//                                }
+                                viewModel.choose(i)
                                 
                             }
                         Text(titles[i])
-                            .frame(maxWidth: 56)
+                            .font(.subheadline)
+                            .frame(maxWidth: 50)
                             .multilineTextAlignment(.center)
                     }
                     
@@ -47,11 +45,11 @@ struct SegmentedControl<
                 }
             }
         }
+        .frame(height: 75)
     }
     
     @ViewBuilder
     func circle(selected: Bool) -> some View {
-        //    func circle() -> some View {
         if selected {
             ZStack {
                 Circle()
@@ -59,7 +57,7 @@ struct SegmentedControl<
                     .foregroundColor(.mediumGray)
                 Circle()
                     .foregroundColor(.vividPurple)
-                    .frame(height: circleSize - 10)
+                    .frame(height: circleSize - 8)
             }
         } else {
             ZStack {
@@ -73,6 +71,6 @@ struct SegmentedControl<
 
 struct SegmentedControl_Previews: PreviewProvider {
     static var previews: some View {
-        SegmentedControl<LogAddViewModel>(viewModel: .preview, selected: 1, titles: ["팬티 라이너", "소형", "중형", "대형", "오버 나이트"])
+        SegmentedControl<LogAddViewModel>(viewModel: .preview, titles: ["팬티 라이너", "소형", "중형", "대형", "오버 나이트"])
     }
 }

@@ -28,11 +28,11 @@ struct MainView: View {
     ]
     
     let ment = [
-    "잠잘 때 오버나이트로도 생리가 샌다면, 팬티형 생리대를 사용해보는 건 어때?",
-    "팬티에 생리가 묻었다면, 미지근한 물에 잠깐 담궈 두었다가 빨래 비누로 그 부분만 손빨래 하면 돼!",
-    "생리대 이외에도 탐폰이나 생리컵 같은 다른 선택지도 있어!",
-    "생리통이 심하다면, 참지 말고 약국에 가서 생리통 약을 달라고 해.",
-    "생리통이 심할 때, 찜질팩을 이용해서 배에 찜질을 해주면 좀 나아!"
+        "잠잘 때 오버나이트로도 생리가 샌다면, 팬티형 생리대를 사용해보는 건 어때?",
+        "팬티에 생리가 묻었다면, 미지근한 물에 잠깐 담궈 두었다가 빨래 비누로 그 부분만 손빨래 하면 돼!",
+        "생리대 이외에도 탐폰이나 생리컵 같은 다른 선택지도 있어!",
+        "생리통이 심하다면, 참지 말고 약국에 가서 생리통 약을 달라고 해.",
+        "생리통이 심할 때, 찜질팩을 이용해서 배에 찜질을 해주면 좀 나아!"
     ]
     
     
@@ -43,8 +43,8 @@ struct MainView: View {
             ZStack{
                 Color(red: 134 / 255, green: 77 / 255, blue: 243 / 255)
                     .ignoresSafeArea()
-              
-
+                
+                
                 VStack{
                     HStack{
                         Text("가이드 니나(NINA)")
@@ -63,81 +63,85 @@ struct MainView: View {
                     .padding(30)
                     
                     ScrollView() {
-                    ZStack{
-                        Image("NinaWithBack")
-                        //.position(x:195, y:50)
                         ZStack{
-                            Image("speechBubble")
-                                .overlay(
-                                    Text("\(afterPeriod[Int.random(in: 0...7)])")
-                                        .font(Font.custom("DungGeunMo", size: 15))
-                                        .frame(width: 200, height:60, alignment: .center)
-                                        .position(x:100, y:25)
-                                        .minimumScaleFactor(0.5)
-                                        .foregroundColor(Color(red: 97/255 ,green: 58/255, blue: 215/255))
-                                        .padding()
-                                    
-                                )
-                                .position(x: 240, y:60)
-         
+                            Image("NinaWithBack")
+                            //.position(x:195, y:50)
+                            ZStack{
+                                Image("speechBubble")
+                                    .overlay(
+                                        Text("\(afterPeriod[Int.random(in: 0...7)])")
+                                            .font(Font.custom("DungGeunMo", size: 15))
+                                            .frame(width: 200, height:60, alignment: .center)
+                                            .position(x:100, y:25)
+                                            .minimumScaleFactor(0.5)
+                                            .foregroundColor(Color(red: 97/255 ,green: 58/255, blue: 215/255))
+                                            .padding()
+                                        
+                                    )
+                                    .position(x: 240, y:60)
+                                
+                            }
+                            
                         }
                         
-                    }
-                    
-                    Text("생리 1일차") //data 받아와야함
-                        .foregroundColor(.white)
-                        .font(.system(size:34, weight:.heavy))
-                        .padding(10)
-                    //.position(x:195,y:20)
-                    
-                    
-                    
-                    Button {
-                        //기록하기 화면 뷰로 가주세여
-                    } label: {
-                        ZStack{
-                            RoundedRectangle(cornerRadius: 40)
-                                .foregroundColor(Color(red: 248/255, green: 255/255, blue: 46/255))
-                                .frame(width: 300, height: 50)
-                            
-                            HStack{
-                                Image(systemName: "square.and.pencil.circle.fill")
-                                    .foregroundColor(.black)
-                                
-                                Text("기록하기")
-                                    .foregroundColor(.black)
-                            }
-                            .font(.system(size: 24))
+                        Text("생리 1일차") //data 받아와야함
+                            .foregroundColor(.white)
+                            .font(.system(size:34, weight:.heavy))
+                            .padding(10)
+                        //.position(x:195,y:20)
+                        
+                        NavigationLink {
+                            LogAddView(viewModel: LogAddViewModel(date: Date()))
+                        } label: {
+                            Text("ahaha")
                         }
-                    }
-          
-                    
-                    
-                    //기록하기 전과 후로 나누어서 진행하기
-                    
-//                    ZStack{
-//                        RoundedRectangle(cornerRadius: 20)
-//                            .foregroundColor(.white)
-//                            //.opacity(0.5)
-//                            .frame(width: 350, height: 180)
-//
-//                        Text("생리를 기록하면 상황에\n맞는 추천 생리대 크기와\n생리대 가는 시간을 알려줄게")
-//                            .foregroundColor(.gray)
-//                            //.frame(alignment: .center)
-//                            .multilineTextAlignment(.center)
-//
-//
-//                    }//생리 시작 전 화면
-                    
-                    
-                   
+                        
+                        Button {
+                            //기록하기 화면 뷰로 가주세여
+                        } label: {
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 40)
+                                    .foregroundColor(Color(red: 248/255, green: 255/255, blue: 46/255))
+                                    .frame(width: 300, height: 50)
+                                
+                                HStack{
+                                    Image(systemName: "square.and.pencil.circle.fill")
+                                        .foregroundColor(.black)
+                                    
+                                    Text("기록하기")
+                                        .foregroundColor(.black)
+                                }
+                                .font(.system(size: 24))
+                            }
+                        }
+                        
+                        
+                        
+                        //기록하기 전과 후로 나누어서 진행하기
+                        
+                        //                    ZStack{
+                        //                        RoundedRectangle(cornerRadius: 20)
+                        //                            .foregroundColor(.white)
+                        //                            //.opacity(0.5)
+                        //                            .frame(width: 350, height: 180)
+                        //
+                        //                        Text("생리를 기록하면 상황에\n맞는 추천 생리대 크기와\n생리대 가는 시간을 알려줄게")
+                        //                            .foregroundColor(.gray)
+                        //                            //.frame(alignment: .center)
+                        //                            .multilineTextAlignment(.center)
+                        //
+                        //
+                        //                    }//생리 시작 전 화면
+                        
+                        
+                        
                         ZStack{
                             RoundedRectangle(cornerRadius: 20)
                                 .foregroundColor(Color(red: 217/255,green: 217/255, blue:217/255))
                                 .frame(width: .infinity, height: 360)
                                 .edgesIgnoringSafeArea(.bottom)
-
-
+                            
+                            
                             //.opacity(0.5)
                             VStack{
                                 ZStack{
@@ -155,8 +159,8 @@ struct MainView: View {
                                                 .stroke(Color.gray)
                                                 .foregroundColor(.white)
                                                 .frame(width: 300, height: 70)
-                                              
-                                                   
+                                            
+                                            
                                             VStack{
                                                 RoundedRectangle(cornerRadius: 30)
                                                     .foregroundColor(Color(red: 183/255, green: 152/255,blue: 243/255))
@@ -177,7 +181,7 @@ struct MainView: View {
                                                     .foregroundColor(.gray)
                                                     .multilineTextAlignment(.center)
                                             }
-                                                    
+                                            
                                             
                                             
                                         }
@@ -190,7 +194,7 @@ struct MainView: View {
                                     RoundedRectangle(cornerRadius: 20)
                                         .foregroundColor(.white)
                                         .frame(width: .infinity, height: 200)
-
+                                    
                                     DailyCheckView()
                                         .frame(width: .infinity, height: 100)
                                     
@@ -208,11 +212,11 @@ struct MainView: View {
             }
             .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
             .edgesIgnoringSafeArea(.top)
-
+            
             
             
         }
-    
+        
         
         
         

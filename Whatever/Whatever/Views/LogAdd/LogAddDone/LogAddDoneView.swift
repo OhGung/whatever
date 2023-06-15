@@ -12,14 +12,19 @@ struct LogAddDoneView<
 >: View {
     @ObservedObject var viewModel: ViewModel
     var body: some View {
-        VStack(alignment: .leading) {
-            NinaSaidView(content: viewModel.whatNinaSaid)
-            TipBoxView(title: "기록날짜", content: viewModel.date.fullString)
+        VStack(spacing: 18) {
+            HStack {
+                NinaSaidView(content: viewModel.whatNinaSaid)
+                Spacer()
+            }
+            TipBoxView(title: "기록 날짜", content: viewModel.date.fullString,  type:.content)
             PadImageView(imageName: viewModel.imageName)
-            TipBoxView(title: "생리대 크기", content: viewModel.padType.description)
-            TipBoxView(title: "생리대 양", content: viewModel.flowLevel.description)
+                .frame(height: 294)
+            TipBoxView(title: "생리대 크기", content: viewModel.padType.description, type: .content)
+            TipBoxView(title: "생리대 양", content: viewModel.flowLevel.description, type: .content)
             saveButton
         }
+        .frame(width: 350)
         .padding()
     }
     

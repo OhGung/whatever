@@ -33,6 +33,9 @@
 		B23202262A39EFA7005919FE /* LogAddDoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23202252A39EFA7005919FE /* LogAddDoneView.swift */; };
 		B23202282A39F15F005919FE /* TipBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23202272A39F15F005919FE /* TipBoxView.swift */; };
 		B232022A2A39F5E7005919FE /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23202292A39F5E7005919FE /* Date+.swift */; };
+		B232022C2A3B3E0B005919FE /* LightPurpleCapsuleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B232022B2A3B3E0B005919FE /* LightPurpleCapsuleLabel.swift */; };
+		B232022F2A3B400B005919FE /* AddCycleLogTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B232022E2A3B400B005919FE /* AddCycleLogTip.swift */; };
+		B23202322A3B74D0005919FE /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23202312A3B74D0005919FE /* CardView.swift */; };
 		B29135472A34DA7C0046F956 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29135462A34DA7C0046F956 /* MainView.swift */; };
 		B291354A2A34DB850046F956 /* CycleLog+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29135482A34DB850046F956 /* CycleLog+CoreDataClass.swift */; };
 		B291354E2A34DBE90046F956 /* PadTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B291354D2A34DBE90046F956 /* PadTypeEnum.swift */; };
@@ -99,6 +102,9 @@
 		B23202252A39EFA7005919FE /* LogAddDoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogAddDoneView.swift; sourceTree = "<group>"; };
 		B23202272A39F15F005919FE /* TipBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipBoxView.swift; sourceTree = "<group>"; };
 		B23202292A39F5E7005919FE /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		B232022B2A3B3E0B005919FE /* LightPurpleCapsuleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightPurpleCapsuleLabel.swift; sourceTree = "<group>"; };
+		B232022E2A3B400B005919FE /* AddCycleLogTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCycleLogTip.swift; sourceTree = "<group>"; };
+		B23202312A3B74D0005919FE /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		B29135462A34DA7C0046F956 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		B29135482A34DB850046F956 /* CycleLog+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CycleLog+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B291354D2A34DBE90046F956 /* PadTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadTypeEnum.swift; sourceTree = "<group>"; };
@@ -183,22 +189,16 @@
 				B232020A2A38263B005919FE /* RoundedCornersShape.swift */,
 				B232020E2A382792005919FE /* Theme.swift */,
 				B232021D2A389213005919FE /* NinaSaidView */,
+				B232022B2A3B3E0B005919FE /* LightPurpleCapsuleLabel.swift */,
+				B23202312A3B74D0005919FE /* CardView.swift */,
 			);
 			path = Component;
-			sourceTree = "<group>";
-		};
-		51C5606A2A3826870074B62E /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				51C5606B2A3826AB0074B62E /* CalendarViewModel.swift */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		B23202102A382978005919FE /* LogAdd */ = {
 			isa = PBXGroup;
 			children = (
-				B23202252A39EFA7005919FE /* LogAddDoneView.swift */,
+				B23202302A3B614D005919FE /* LogAddDone */,
 				B23202112A382A13005919FE /* PadImageView.swift */,
 				B23202132A383055005919FE /* SegmentedControl.swift */,
 				B23202162A3858A3005919FE /* LogAddViewModel.swift */,
@@ -224,6 +224,14 @@
 			path = NinaSaidView;
 			sourceTree = "<group>";
 		};
+		B23202302A3B614D005919FE /* LogAddDone */ = {
+			isa = PBXGroup;
+			children = (
+				B23202252A39EFA7005919FE /* LogAddDoneView.swift */,
+			);
+			path = LogAddDone;
+			sourceTree = "<group>";
+		};
 		B29135442A34DA560046F956 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,15 +252,9 @@
 				B23202072A38025D005919FE /* Component */,
 				B29135462A34DA7C0046F956 /* MainView.swift */,
 				B5E28FEF2A39DB2D00DCF0BF /* DailyCheckView.swift */,
-				B5E28FEF2A39DB2D00DCF0BF /* DailyCheckView.swift */,
 				B29135512A34DC9E0046F956 /* PeriodListView.swift */,
 				B29135532A34DCDB0046F956 /* PeriodDetailView.swift */,
 				B23202102A382978005919FE /* LogAdd */,
-				0332D5472A398308003952B3 /* SettingAlarmView.swift */,
-				0332D53F2A387143003952B3 /* NotificationAllowOneView.swift */,
-				0332D5412A387C7A003952B3 /* NotificationAllowTwoView.swift */,
-				51C560632A38210D0074B62E /* CalenderView.swift */,
-				51C560652A38223F0074B62E /* CalenderDayView.swift */,
 				0332D5472A398308003952B3 /* SettingAlarmView.swift */,
 				0332D53F2A387143003952B3 /* NotificationAllowOneView.swift */,
 				0332D5412A387C7A003952B3 /* NotificationAllowTwoView.swift */,
@@ -267,6 +269,7 @@
 			children = (
 				B291354D2A34DBE90046F956 /* PadTypeEnum.swift */,
 				B291354F2A34DC110046F956 /* FlowLevelEnum.swift */,
+				B232022E2A3B400B005919FE /* AddCycleLogTip.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -298,11 +301,8 @@
 				0332D53C2A375730003952B3 /* Info.plist */,
 				B2B27E9B2A3475C4000F2944 /* WhateverApp.swift */,
 				B5E28FF12A39EF5300DCF0BF /* EductionTip.swift */,
-				B5E28FF12A39EF5300DCF0BF /* EductionTip.swift */,
 				B29135452A34DA600046F956 /* Views */,
 				B29135442A34DA560046F956 /* Models */,
-				51C5606A2A3826870074B62E /* ViewModels */,
-				51C560672A3825CF0074B62E /* Extensions */,
 				51C5606A2A3826870074B62E /* ViewModels */,
 				51C560672A3825CF0074B62E /* Extensions */,
 				B2B27ECA2A3475FB000F2944 /* Resources */,
@@ -487,6 +487,7 @@
 				B2B27EA52A3475C6000F2944 /* PersistenceController.swift in Sources */,
 				B232021A2A385968005919FE /* BaseViewModel.swift in Sources */,
 				B29135542A34DCDB0046F956 /* PeriodDetailView.swift in Sources */,
+				B232022C2A3B3E0B005919FE /* LightPurpleCapsuleLabel.swift in Sources */,
 				B232020B2A38263B005919FE /* RoundedCornersShape.swift in Sources */,
 				0332D5442A38CC27003952B3 /* LocalNotificationHelper.swift in Sources */,
 				0332D5442A38CC27003952B3 /* LocalNotificationHelper.swift in Sources */,
@@ -499,6 +500,7 @@
 				B23202122A382A13005919FE /* PadImageView.swift in Sources */,
 				B5E28FF22A39EF5300DCF0BF /* EductionTip.swift in Sources */,
 				B5E28FF22A39EF5300DCF0BF /* EductionTip.swift in Sources */,
+				B23202322A3B74D0005919FE /* CardView.swift in Sources */,
 				B29135502A34DC110046F956 /* FlowLevelEnum.swift in Sources */,
 				B29135562A34DD2C0046F956 /* PersistenceController+CycleLog.swift in Sources */,
 				B23202262A39EFA7005919FE /* LogAddDoneView.swift in Sources */,
@@ -507,6 +509,7 @@
 				B232022A2A39F5E7005919FE /* Date+.swift in Sources */,
 				B232020F2A382792005919FE /* Theme.swift in Sources */,
 				B23202282A39F15F005919FE /* TipBoxView.swift in Sources */,
+				B232022F2A3B400B005919FE /* AddCycleLogTip.swift in Sources */,
 				51C5606C2A3826AB0074B62E /* CalendarViewModel.swift in Sources */,
 				B291354E2A34DBE90046F956 /* PadTypeEnum.swift in Sources */,
 				51C560662A3822400074B62E /* CalenderDayView.swift in Sources */,
@@ -681,11 +684,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Whatever/Preview Content\"";
-				DEVELOPMENT_TEAM = X32GZ3NKQ8;
 				DEVELOPMENT_TEAM = X32GZ3NKQ8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -714,11 +715,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Whatever/Preview Content\"";
-				DEVELOPMENT_TEAM = X32GZ3NKQ8;
 				DEVELOPMENT_TEAM = X32GZ3NKQ8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

@@ -10,6 +10,11 @@ import SwiftUI
 struct TipBoxView: View {
     var title: String
     var content: String
+    var type: TipBoxType
+    
+    enum TipBoxType {
+        case tip, content
+    }
     
     var body: some View {
         CapsuleView(
@@ -17,30 +22,35 @@ struct TipBoxView: View {
             borderWidth: 1,
             borderColor: .mediumGray
         ) {
-            VStack {
+            VStack(spacing: 7) {
                 tipLabel
-                Text(content)
+                    .frame(height: 19)
+                VStack(spacing: 0) {
+                    Spacer(minLength: 0)
+                    Text(content)
+                        .lineSpacing(0)
+                        .font(type == .tip ? .caption : .title2)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(type == .tip ?  .dimGray : .clearBlack)
+                    Spacer(minLength: 0)
+                }
+                
             }
-            .padding()
+            .padding(.top, 6)
+            .padding(.vertical, 6)
+            .padding(.horizontal, 5)
             .frame(maxWidth: .infinity)
         }
+        
     }
 
     var tipLabel: some View {
-        CapsuleView(radius:Theme.radii.r5) {
-            Text(title)
-                .foregroundColor(.white)
-                .font(.callout)
-                .bold()
-                .padding(.vertical, 3)
-                .padding(.horizontal)
-                .background(Color.lightPurple)
-        }
+        LightPurpleCapsuleLabel(content: title)
     }
 }
 
 struct TipBoxView_Previews: PreviewProvider {
     static var previews: some View {
-        TipBoxView(title: "TIP", content: "아무말")
+        TipBoxView(title: "TIP", content: "아무말\nsdfsdg", type: .content)
     }
 }
