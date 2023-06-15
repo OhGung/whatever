@@ -198,7 +198,7 @@
 		B23202102A382978005919FE /* LogAdd */ = {
 			isa = PBXGroup;
 			children = (
-				B23202302A3B614D005919FE /* LogAddDone */,
+				B23202252A39EFA7005919FE /* LogAddDoneView.swift */,
 				B23202112A382A13005919FE /* PadImageView.swift */,
 				B23202132A383055005919FE /* SegmentedControl.swift */,
 				B23202162A3858A3005919FE /* LogAddViewModel.swift */,
@@ -222,14 +222,6 @@
 				B232021B2A388FF7005919FE /* NinaSaidView.swift */,
 			);
 			path = NinaSaidView;
-			sourceTree = "<group>";
-		};
-		B23202302A3B614D005919FE /* LogAddDone */ = {
-			isa = PBXGroup;
-			children = (
-				B23202252A39EFA7005919FE /* LogAddDoneView.swift */,
-			);
-			path = LogAddDone;
 			sourceTree = "<group>";
 		};
 		B29135442A34DA560046F956 /* Models */ = {

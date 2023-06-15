@@ -21,6 +21,22 @@ struct LogAddView<
     var body: some View {
         if viewModel.isPhaseDone {
             LogAddDoneView(viewModel: viewModel)
+                .navigationTitle("오늘의 생리 기록")
+                .navigationBarBackButtonHidden()
+                .toolbar{
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button {
+                            let result = viewModel.goToPrevPhase()
+                            print(result)
+                            if result == false {
+                                dismiss.callAsFunction()
+                            }
+                        } label: {
+                            Image(systemName: "chevron.backward")
+                                .foregroundColor(Color.vividPurple)
+                        }
+                    }
+                }
         } else {
             VStack(spacing: 18) {
                 currentDateView
@@ -48,7 +64,24 @@ struct LogAddView<
                     .frame(width: 350, height: 92)
                 nextButton
             }
+            .navigationTitle("오늘의 생리 기록")
+            .navigationBarBackButtonHidden()
+            .toolbar{
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        let result = viewModel.goToPrevPhase()
+                        print(result)
+                        if result == false {
+                            dismiss.callAsFunction()
+                        }
+                    }, label: {
+                        Image(systemName: "chevron.backward")
+                            .foregroundColor(Color.vividPurple)
+                    })
+                }
+            }
         }
+        
     }
     
     var currentDateView: some View {

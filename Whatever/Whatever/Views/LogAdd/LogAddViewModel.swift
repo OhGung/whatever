@@ -19,7 +19,7 @@ protocol LogAddViewModelProtocol: ObservableObject {
     var isPhaseDone: Bool { get }
     var tipDetail: String { get }
     func goToNextPhase()
-    func goToPrevPhase()
+    func goToPrevPhase() -> Bool
     func saveCycle()
     func choose(_:Int)
 }
@@ -66,20 +66,18 @@ final class LogAddViewModel: BaseViewModel, LogAddViewModelProtocol {
             }
         }
     }
-    
+
     private(set) var date: Date
     @Published private(set) var currentPhase: AddPhase = .addPadType
     @Published private(set) var padType: PadTypeEnum
     @Published private(set) var flowLevel: FlowLevelEnum
     
     var imageName: String {
-        switch (currentPhase, padType, flowLevel) {
-        case (.addPadType, _, _):
+        switch currentPhase {
+        case .addPadType:
             return padType.imageName
-        case (.addFlowLevel, _, _):
+        default:
             return "\(padType.imageName)_\(flowLevel.imageName)"
-        case (.done, _, _):
-            return ""
         }
     }
     
@@ -126,9 +124,12 @@ final class LogAddViewModel: BaseViewModel, LogAddViewModelProtocol {
         }
     }
     
-    func goToPrevPhase() {
+    func goToPrevPhase() -> Bool {
         if let prevPhase = currentPhase.previousPhase {
             currentPhase = prevPhase
+            return true
+        } else {
+            return false
         }
     }
     
@@ -142,7 +143,13 @@ final class LogAddViewModel: BaseViewModel, LogAddViewModelProtocol {
     }
     
     func saveCycle() {
-        PersistenceController.shared.addLog(date: date, padType: padType, flowLevel: flowLevel)
+        DispatchQueue.main.async {
+            PersistenceController.shared.addLog(
+                date: self.date,
+                padType: self.padType,
+                flowLevel: self.flowLevel
+            )
+        }
     }
 }
 

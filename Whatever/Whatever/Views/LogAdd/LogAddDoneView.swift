@@ -11,6 +11,8 @@ struct LogAddDoneView<
     ViewModel: LogAddViewModelProtocol
 >: View {
     @ObservedObject var viewModel: ViewModel
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
         VStack(spacing: 18) {
             HStack {
@@ -32,6 +34,7 @@ struct LogAddDoneView<
         Button {
             print("nextButtonTapped")
             viewModel.saveCycle()
+            dismiss.callAsFunction()
         } label: {
             CapsuleView(
                 radius:Theme.radii.r3
