@@ -39,175 +39,177 @@ struct MainView: View {
     
     var body: some View {
         //PeriodListView(items:cycleLogs)
-        NavigationView{
+        NavigationStack{
             ZStack{
-                Color(red: 134 / 255, green: 77 / 255, blue: 243 / 255)
-                    .ignoresSafeArea()
-                
-                
-                VStack{
+                VStack(spacing: 0){
                     HStack{
                         Text("가이드 니나(NINA)")
                             .foregroundColor(.white)
                             .font(.system(size: 20, weight: .bold))
-                        
                         Spacer()
-                        
-                        Button{
-                            //알림on,off 화면으로 가주세여
-                        }label: {
+                        NavigationLink(destination: SettingAlarmView(), label: {
                             Image(systemName: "bell.fill")
-                                .foregroundColor(Color(red: 248/255, green: 255/255, blue: 46/255))
-                        }
+                                .foregroundColor(.vividYellow)
+                                .font(.title3)
+                        })
                     }
-                    .padding(30)
+                    .padding(.horizontal, 30)
+                    .padding(.top, 30)
+                    .padding(.bottom, 10)
                     
-                    ScrollView() {
-                        ZStack{
-                            Image("NinaWithBack")
-                            //.position(x:195, y:50)
+                    ScrollView(showsIndicators: false) {
+                        VStack(spacing: 0) {
                             ZStack{
-                                Image("speechBubble")
-                                    .overlay(
-                                        Text("\(afterPeriod[Int.random(in: 0...7)])")
-                                            .font(Font.custom("DungGeunMo", size: 15))
-                                            .frame(width: 200, height:60, alignment: .center)
-                                            .position(x:100, y:25)
-                                            .minimumScaleFactor(0.5)
-                                            .foregroundColor(Color(red: 97/255 ,green: 58/255, blue: 215/255))
-                                            .padding()
-                                        
-                                    )
-                                    .position(x: 240, y:60)
-                                
-                            }
-                            
-                        }
-                        
-                        Text("생리 1일차") //data 받아와야함
-                            .foregroundColor(.white)
-                            .font(.system(size:34, weight:.heavy))
-                            .padding(10)
-                        //.position(x:195,y:20)
-                        
-                        NavigationLink {
-                            LogAddView(viewModel: LogAddViewModel(date: Date()))
-                        } label: {
-                            Text("ahaha")
-                        }
-                        
-                        Button {
-                            //기록하기 화면 뷰로 가주세여
-                        } label: {
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 40)
-                                    .foregroundColor(Color(red: 248/255, green: 255/255, blue: 46/255))
-                                    .frame(width: 300, height: 50)
-                                
-                                HStack{
-                                    Image(systemName: "square.and.pencil.circle.fill")
-                                        .foregroundColor(.black)
-                                    
-                                    Text("기록하기")
-                                        .foregroundColor(.black)
-                                }
-                                .font(.system(size: 24))
-                            }
-                        }
-                        
-                        
-                        
-                        //기록하기 전과 후로 나누어서 진행하기
-                        
-                        //                    ZStack{
-                        //                        RoundedRectangle(cornerRadius: 20)
-                        //                            .foregroundColor(.white)
-                        //                            //.opacity(0.5)
-                        //                            .frame(width: 350, height: 180)
-                        //
-                        //                        Text("생리를 기록하면 상황에\n맞는 추천 생리대 크기와\n생리대 가는 시간을 알려줄게")
-                        //                            .foregroundColor(.gray)
-                        //                            //.frame(alignment: .center)
-                        //                            .multilineTextAlignment(.center)
-                        //
-                        //
-                        //                    }//생리 시작 전 화면
-                        
-                        
-                        
-                        ZStack{
-                            RoundedRectangle(cornerRadius: 20)
-                                .foregroundColor(Color(red: 217/255,green: 217/255, blue:217/255))
-                                .frame(width: .infinity, height: 360)
-                                .edgesIgnoringSafeArea(.bottom)
-                            
-                            
-                            //.opacity(0.5)
-                            VStack{
+                                Image("NinaWithBack")
                                 ZStack{
+                                    Image("speechBubble")
+                                        .overlay(
+                                            Text("\(afterPeriod[Int.random(in: 0...7)])")
+                                                .font(Font.custom("DungGeunMo", size: 15))
+                                                .frame(width: 200, height:60, alignment: .center)
+                                                .position(x:110, y:25)
+                                                .minimumScaleFactor(0.5)
+                                                .foregroundColor(.vividPurple)
+                                                .padding()
+                                        )
+                                        .position(x: 240, y:60)
+                                }
+                            }
+                            
+                            Text("생리 1일차") //data 받아와야함
+                                .foregroundColor(.white)
+                                .font(.system(size:34, weight:.heavy))
+                                .padding(.bottom, 18)
+                            
+                            NavigationLink(destination: CalenderView(records: cycleLogs), label: {
+                                ZStack{
+                                    RoundedRectangle(cornerRadius: 40)
+                                        .foregroundColor(.vividYellow)
+                                        .frame(width: 300, height: 62)
+                                    
+                                    HStack{
+                                        Image(systemName: "square.and.pencil.circle.fill")
+                                            .foregroundColor(.black)
+                                        Text("기록하기")
+                                            .foregroundColor(.black)
+                                            .bold()                                     .fontWeight(.heavy)
+                                    }
+                                    .font(.system(size: 24))
+                                }
+                            })
+                            .padding(.bottom, 18)
+                            
+                            
+                            
+                            
+                            //기록하기 전과 후로 나누어서 진행하기
+//                            ZStack {
+//                                RoundedRectangle(cornerRadius: 20)
+//                                    .foregroundColor(.white)
+//                                    .frame(width: 350, height: 180)
+//                                VStack(spacing: 0) {
+//                                    Text("오늘 하루 필요한 생리대는?")
+//                                        .font(.subheadline)
+//                                    
+//                                    Text("기록하면 알려줄게요") //정보 받아와서 알려주기
+//                                        .font(.system(size: 32, weight: .bold))
+//                                        .foregroundColor(.vividPurple)
+//                                        .padding(.bottom, 8)
+//                                    ZStack{
+//                                        RoundedRectangle(cornerRadius: 50)
+//                                            .stroke(Color.gray)
+//                                            .foregroundColor(.white)
+//                                            .frame(width: 252, height: 70)
+//                                        
+//                                        
+//                                        VStack{
+//                                            RoundedRectangle(cornerRadius: 30)
+//                                                .foregroundColor(.lightPurple)
+//                                                .frame(width: 35, height:15)
+//                                                .offset(x:0, y:10)
+//                                                .overlay(
+//                                                    Text("TIP")
+//                                                        .offset(x:0, y:10)
+//                                                        .foregroundColor(.white)
+//                                                        .font(.system(size: 13, weight: .bold))
+//                                                    
+//                                                )
+//                                            
+//                                            Text("아직 알려줄 수 있는 팁이 없어요")
+//                                                .frame(width: 235, height: 50)
+//                                                .minimumScaleFactor(0.5)
+//                                                .font(.system(size:13))
+//                                                .foregroundColor(.gray)
+//                                                .multilineTextAlignment(.center)
+//                                        }
+//                                    }
+//                                }
+//                                
+//                            }
+                            
+                            
+                            VStack(spacing: 18){
+                                ZStack {
                                     RoundedRectangle(cornerRadius: 20)
                                         .foregroundColor(.white)
-                                        .frame(width: .infinity, height: 180)
-                                    VStack{
+                                        .frame(width: 350, height: 180)
+                                    VStack(spacing: 0) {
                                         Text("오늘 하루 필요한 생리대는?")
+                                            .font(.subheadline)
                                         
                                         Text("4개 중형") //정보 받아와서 알려주기
-                                            .font(.system(size: 28, weight: .bold))
-                                            .foregroundColor(Color(red: 97/255 ,green: 58/255,blue: 215/255))
+                                            .font(.system(size: 32, weight: .bold))
+                                            .foregroundColor(.vividPurple)
+                                            .padding(.bottom, 8)
                                         ZStack{
-                                            RoundedRectangle(cornerRadius: 40)
+                                            RoundedRectangle(cornerRadius: 50)
                                                 .stroke(Color.gray)
                                                 .foregroundColor(.white)
-                                                .frame(width: 300, height: 70)
+                                                .frame(width: 252, height: 70)
                                             
                                             
                                             VStack{
                                                 RoundedRectangle(cornerRadius: 30)
-                                                    .foregroundColor(Color(red: 183/255, green: 152/255,blue: 243/255))
+                                                    .foregroundColor(.lightPurple)
                                                     .frame(width: 35, height:15)
                                                     .offset(x:0, y:10)
                                                     .overlay(
                                                         Text("TIP")
                                                             .offset(x:0, y:10)
                                                             .foregroundColor(.white)
-                                                            .font(.system(size: 10, weight: .bold))
+                                                            .font(.system(size: 13, weight: .bold))
                                                         
                                                     )
                                                 
                                                 Text("\(ment[Int.random(in: 0...4)])")
-                                                    .frame(width: 280, height: 50)
+                                                    .frame(width: 235, height: 50)
                                                     .minimumScaleFactor(0.5)
                                                     .font(.system(size:13))
                                                     .foregroundColor(.gray)
                                                     .multilineTextAlignment(.center)
                                             }
-                                            
-                                            
-                                            
                                         }
                                     }
                                     
                                 }
-                                
-                                
-                                ZStack{
+
+                                ZStack {
                                     RoundedRectangle(cornerRadius: 20)
-                                        .foregroundColor(.white)
-                                        .frame(width: .infinity, height: 200)
-                                    
-                                    DailyCheckView()
-                                        .frame(width: .infinity, height: 100)
-                                    
-                                    
+                                        .frame(width: 350, height: 230)
+                                        .foregroundColor(.clearWhite)
+                                    VStack(spacing: 5) {
+                                        Text("지금 생리를 어떻게 하고 있을까요?")
+                                            .font(.subheadline)
+                                        DailyCheckView()
+                                            .scaleEffect(0.9)
+                                            .padding(.horizontal)
+                                    }
                                 }
                             }
-                            
-                            
-                        }//생리 시작 후 화면
-                        
+                        }
                     }
-                    
                 }
+                .background(Color.vividPurple)
                 
             }
             .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
