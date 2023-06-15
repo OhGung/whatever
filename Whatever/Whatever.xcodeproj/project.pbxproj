@@ -187,6 +187,14 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
+		51C5606A2A3826870074B62E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				51C5606B2A3826AB0074B62E /* CalendarViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		B23202102A382978005919FE /* LogAdd */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,9 +244,15 @@
 				B23202072A38025D005919FE /* Component */,
 				B29135462A34DA7C0046F956 /* MainView.swift */,
 				B5E28FEF2A39DB2D00DCF0BF /* DailyCheckView.swift */,
+				B5E28FEF2A39DB2D00DCF0BF /* DailyCheckView.swift */,
 				B29135512A34DC9E0046F956 /* PeriodListView.swift */,
 				B29135532A34DCDB0046F956 /* PeriodDetailView.swift */,
 				B23202102A382978005919FE /* LogAdd */,
+				0332D5472A398308003952B3 /* SettingAlarmView.swift */,
+				0332D53F2A387143003952B3 /* NotificationAllowOneView.swift */,
+				0332D5412A387C7A003952B3 /* NotificationAllowTwoView.swift */,
+				51C560632A38210D0074B62E /* CalenderView.swift */,
+				51C560652A38223F0074B62E /* CalenderDayView.swift */,
 				0332D5472A398308003952B3 /* SettingAlarmView.swift */,
 				0332D53F2A387143003952B3 /* NotificationAllowOneView.swift */,
 				0332D5412A387C7A003952B3 /* NotificationAllowTwoView.swift */,
@@ -284,8 +298,11 @@
 				0332D53C2A375730003952B3 /* Info.plist */,
 				B2B27E9B2A3475C4000F2944 /* WhateverApp.swift */,
 				B5E28FF12A39EF5300DCF0BF /* EductionTip.swift */,
+				B5E28FF12A39EF5300DCF0BF /* EductionTip.swift */,
 				B29135452A34DA600046F956 /* Views */,
 				B29135442A34DA560046F956 /* Models */,
+				51C5606A2A3826870074B62E /* ViewModels */,
+				51C560672A3825CF0074B62E /* Extensions */,
 				51C5606A2A3826870074B62E /* ViewModels */,
 				51C560672A3825CF0074B62E /* Extensions */,
 				B2B27ECA2A3475FB000F2944 /* Resources */,
@@ -466,17 +483,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				0332D5402A387143003952B3 /* NotificationAllowOneView.swift in Sources */,
+				0332D5402A387143003952B3 /* NotificationAllowOneView.swift in Sources */,
 				B2B27EA52A3475C6000F2944 /* PersistenceController.swift in Sources */,
 				B232021A2A385968005919FE /* BaseViewModel.swift in Sources */,
 				B29135542A34DCDB0046F956 /* PeriodDetailView.swift in Sources */,
 				B232020B2A38263B005919FE /* RoundedCornersShape.swift in Sources */,
 				0332D5442A38CC27003952B3 /* LocalNotificationHelper.swift in Sources */,
+				0332D5442A38CC27003952B3 /* LocalNotificationHelper.swift in Sources */,
 				B29135522A34DC9E0046F956 /* PeriodListView.swift in Sources */,
 				B232021C2A388FF7005919FE /* NinaSaidView.swift in Sources */,
+				0332D5422A387C7A003952B3 /* NotificationAllowTwoView.swift in Sources */,
 				0332D5422A387C7A003952B3 /* NotificationAllowTwoView.swift in Sources */,
 				B291354A2A34DB850046F956 /* CycleLog+CoreDataClass.swift in Sources */,
 				B232020D2A3826F4005919FE /* View+.swift in Sources */,
 				B23202122A382A13005919FE /* PadImageView.swift in Sources */,
+				B5E28FF22A39EF5300DCF0BF /* EductionTip.swift in Sources */,
 				B5E28FF22A39EF5300DCF0BF /* EductionTip.swift in Sources */,
 				B29135502A34DC110046F956 /* FlowLevelEnum.swift in Sources */,
 				B29135562A34DD2C0046F956 /* PersistenceController+CycleLog.swift in Sources */,
@@ -492,7 +513,10 @@
 				B29135582A34DD700046F956 /* LogAddView.swift in Sources */,
 				B2AB6EC12A34E3F70022A2E2 /* CycleLog+CoreDataProperties.swift in Sources */,
 				51C560642A38210D0074B62E /* CalenderView.swift in Sources */,
+				51C560642A38210D0074B62E /* CalenderView.swift in Sources */,
 				0332D5322A375130003952B3 /* Font+.swift in Sources */,
+				0332D5462A38CF9E003952B3 /* AppDelegate.swift in Sources */,
+				0332D5482A398308003952B3 /* SettingAlarmView.swift in Sources */,
 				0332D5462A38CF9E003952B3 /* AppDelegate.swift in Sources */,
 				0332D5482A398308003952B3 /* SettingAlarmView.swift in Sources */,
 				B29135472A34DA7C0046F956 /* MainView.swift in Sources */,
@@ -657,9 +681,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Whatever/Preview Content\"";
+				DEVELOPMENT_TEAM = X32GZ3NKQ8;
 				DEVELOPMENT_TEAM = X32GZ3NKQ8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -688,9 +714,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Whatever/Preview Content\"";
+				DEVELOPMENT_TEAM = X32GZ3NKQ8;
 				DEVELOPMENT_TEAM = X32GZ3NKQ8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
