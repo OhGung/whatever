@@ -33,8 +33,11 @@ extension Date {
         return Calendar.current.component(.weekday, from: self)
     }
     
+    var firstDayOfTheMonth: Date {
+        Calendar.current.dateComponents([.calendar, .year,.month], from: self).date!
+    }
+    
     var fullString: String {
         "\(year)년 \(month)월 \(day)일"
     }
-    
 }
