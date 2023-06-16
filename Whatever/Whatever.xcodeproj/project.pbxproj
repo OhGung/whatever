@@ -44,7 +44,6 @@
 		B291354A2A34DB850046F956 /* CycleLog+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29135482A34DB850046F956 /* CycleLog+CoreDataClass.swift */; };
 		B291354E2A34DBE90046F956 /* PadTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B291354D2A34DBE90046F956 /* PadTypeEnum.swift */; };
 		B29135502A34DC110046F956 /* FlowLevelEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B291354F2A34DC110046F956 /* FlowLevelEnum.swift */; };
-		B29135522A34DC9E0046F956 /* PeriodListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29135512A34DC9E0046F956 /* PeriodListView.swift */; };
 		B29135542A34DCDB0046F956 /* PeriodDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29135532A34DCDB0046F956 /* PeriodDetailView.swift */; };
 		B29135562A34DD2C0046F956 /* PersistenceController+CycleLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29135552A34DD2C0046F956 /* PersistenceController+CycleLog.swift */; };
 		B29135582A34DD700046F956 /* LogAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29135572A34DD700046F956 /* LogAddView.swift */; };
@@ -117,7 +116,6 @@
 		B29135482A34DB850046F956 /* CycleLog+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CycleLog+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B291354D2A34DBE90046F956 /* PadTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadTypeEnum.swift; sourceTree = "<group>"; };
 		B291354F2A34DC110046F956 /* FlowLevelEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLevelEnum.swift; sourceTree = "<group>"; };
-		B29135512A34DC9E0046F956 /* PeriodListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodListView.swift; sourceTree = "<group>"; };
 		B29135532A34DCDB0046F956 /* PeriodDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodDetailView.swift; sourceTree = "<group>"; };
 		B29135552A34DD2C0046F956 /* PersistenceController+CycleLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersistenceController+CycleLog.swift"; sourceTree = "<group>"; };
 		B29135572A34DD700046F956 /* LogAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogAddView.swift; sourceTree = "<group>"; };
@@ -266,7 +264,6 @@
 				0332D55A2A3B83C8003952B3 /* PeriodHistoryView.swift */,
 				0332D55C2A3B8417003952B3 /* CurrentPeriodChartView.swift */,
 				B5E28FEF2A39DB2D00DCF0BF /* DailyCheckView.swift */,
-				B29135512A34DC9E0046F956 /* PeriodListView.swift */,
 				B29135532A34DCDB0046F956 /* PeriodDetailView.swift */,
 				B23202102A382978005919FE /* LogAdd */,
 				0332D5472A398308003952B3 /* SettingAlarmView.swift */,
@@ -504,7 +501,6 @@
 				B232020B2A38263B005919FE /* RoundedCornersShape.swift in Sources */,
 				0332D5442A38CC27003952B3 /* LocalNotificationHelper.swift in Sources */,
 				0332D5442A38CC27003952B3 /* LocalNotificationHelper.swift in Sources */,
-				B29135522A34DC9E0046F956 /* PeriodListView.swift in Sources */,
 				B232021C2A388FF7005919FE /* NinaSaidView.swift in Sources */,
 				0332D5422A387C7A003952B3 /* NotificationAllowTwoView.swift in Sources */,
 				0332D5422A387C7A003952B3 /* NotificationAllowTwoView.swift in Sources */,
@@ -700,10 +696,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Whatever/Preview Content\"";
-				DEVELOPMENT_TEAM = X32GZ3NKQ8;
+				DEVELOPMENT_TEAM = 6BHXWP5PYW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Whatever/Info.plist;
@@ -712,6 +709,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -719,6 +717,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ogung.Whatever;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -731,10 +730,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Whatever/Preview Content\"";
-				DEVELOPMENT_TEAM = X32GZ3NKQ8;
+				DEVELOPMENT_TEAM = 6BHXWP5PYW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Whatever/Info.plist;
@@ -743,6 +743,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -750,6 +751,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ogung.Whatever;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

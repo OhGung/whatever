@@ -15,6 +15,7 @@ struct TimeRecord {
 struct CalenderView: View {
     @Environment(\.dismiss) private var dismiss
     var records: FetchedResults<CycleLog>
+    @State var isDismiss: Bool = false
     @State var timeRecords: [String] = [""]
     @State private var months: [Int] = []
     @State var isLoading = true
@@ -79,7 +80,8 @@ struct CalenderView: View {
             }
             
             NavigationLink(destination: LogAddView(
-                viewModel: LogAddViewModel(cycleLog: cycleLog, date: date)
+                viewModel: LogAddViewModel(cycleLog: cycleLog, date: date),
+                isDismiss: $isDismiss
             )) {
                 Text("다음")
                     .foregroundColor(Color.white)
@@ -116,6 +118,9 @@ struct CalenderView: View {
                         .foregroundColor(Color.vividPurple)
                 })
             }
+        }
+        .onChange(of: isDismiss) { _ in
+            dismiss.callAsFunction()
         }
     }
     

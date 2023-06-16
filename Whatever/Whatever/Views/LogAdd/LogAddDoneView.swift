@@ -12,6 +12,7 @@ struct LogAddDoneView<
 >: View {
     @ObservedObject var viewModel: ViewModel
     @Environment(\.dismiss) private var dismiss
+    @Binding var isDismiss: Bool
     
     var body: some View {
         VStack(spacing: 18) {
@@ -35,6 +36,7 @@ struct LogAddDoneView<
             print("nextButtonTapped")
             viewModel.saveCycle()
             dismiss.callAsFunction()
+            isDismiss = true
         } label: {
             CapsuleView(
                 radius:Theme.radii.r3
@@ -52,6 +54,6 @@ struct LogAddDoneView<
 
 struct LogAddDoneView_Previews: PreviewProvider {
     static var previews: some View {
-        LogAddDoneView<LogAddViewModel>(viewModel: .previewDone)
+        LogAddDoneView<LogAddViewModel>(viewModel: .previewDone, isDismiss: .constant(false))
     }
 }

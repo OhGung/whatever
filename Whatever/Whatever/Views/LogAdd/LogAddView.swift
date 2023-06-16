@@ -17,10 +17,11 @@ struct LogAddView<
     
     @State private var selectedFlowLevel: FlowLevelEnum = .none
     @State private var selectedPadType: PadTypeEnum = .liner
+    @Binding var isDismiss: Bool
     
     var body: some View {
         if viewModel.isPhaseDone {
-            LogAddDoneView(viewModel: viewModel)
+            LogAddDoneView(viewModel: viewModel, isDismiss: $isDismiss)
                 .navigationTitle("오늘의 생리 기록")
                 .navigationBarBackButtonHidden()
                 .toolbar{
@@ -125,7 +126,8 @@ struct LogAddView<
 struct LogAddView_Previews: PreviewProvider {
     static var previews: some View {
         LogAddView<LogAddViewModel>(
-            viewModel: .preview
+            viewModel: .preview,
+            isDismiss: .constant(false)
         )
     }
 }
