@@ -29,6 +29,7 @@ protocol LogAddViewModelProtocol: ObservableObject {
 final class LogAddViewModel: BaseViewModel, LogAddViewModelProtocol {
     
     init(cycleLog: CycleLog? = nil, date: Date) {
+        self.cycleLog = cycleLog
         self.date = date
         if let cycleLog {
             padType = PadTypeEnum(rawValue: Int(cycleLog.padType)) ?? .liner
@@ -68,6 +69,7 @@ final class LogAddViewModel: BaseViewModel, LogAddViewModelProtocol {
     }
 
     private(set) var date: Date
+    private(set) var cycleLog: CycleLog?
     @Published private(set) var currentPhase: AddPhase = .addPadType
     @Published private(set) var padType: PadTypeEnum
     @Published private(set) var flowLevel: FlowLevelEnum
@@ -143,7 +145,9 @@ final class LogAddViewModel: BaseViewModel, LogAddViewModelProtocol {
     }
     
     func saveCycle() {
-        DispatchQueue.main.async {
+        if let cycleLog {
+            PersistenceController.shared.update(of: cycleLog, padType: self.padType, flowLevel: self.flowLevel)
+        } else {
             PersistenceController.shared.addLog(
                 date: self.date,
                 padType: self.padType,
