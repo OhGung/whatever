@@ -39,7 +39,15 @@ struct LogAddView<
                     }
                 }
         } else {
-            VStack(spacing: 18) {
+            VStack(spacing: 12) {
+                HStack {
+                    Text("팬티를 내려다 본 모습을 기록해봐요")
+                        .foregroundColor(Color.white)
+                        .font(.subheadline)
+                }
+                .frame(maxWidth: .infinity)
+                .frame(height: 42)
+                .background(Color.vividPurple.opacity(0.37))
                 currentDateView
                 PadImageView(
                     imageName: viewModel.imageName
@@ -65,6 +73,7 @@ struct LogAddView<
                     .frame(width: 350, height: 92)
                 nextButton
             }
+            .clipped()
             .navigationTitle("오늘의 생리 기록")
             .navigationBarBackButtonHidden()
             .toolbar{
@@ -81,6 +90,7 @@ struct LogAddView<
                     })
                 }
             }
+            
         }
         
     }
