@@ -25,6 +25,9 @@ struct CalenderView: View {
     var currentMonth = Calendar.current.component(.month, from: Date())
     let loadingCount = 5
     
+    @State var cycleLog: CycleLog? = nil
+//    @State var date: Date = Date()
+    
     var body: some View {
         VStack(spacing: 0) {
             HStack {
@@ -43,12 +46,14 @@ struct CalenderView: View {
                                         timeRecords: timeRecords,
                                         selectedDay: $selectedDay,
                                         selectedMonth: $selectedMonth,
-                                        selectedYear: $selectedYear)
+                                        selectedYear: $selectedYear
+                                        
+                                        )
                             .id(month)
                             .onAppear {
                                 if month == months.last {
                                     prependPreviousMonths(loadingCount)
-                                    appendNextMonths(loadingCount)
+//                                    appendNextMonths(loadingCount)
                                 }
                             }
                         }
@@ -57,16 +62,24 @@ struct CalenderView: View {
                 .onAppear {
                     timeRecords = refineRecords()
                     appendCurrentMonth()
-//                    appendCurrentMonth(currentMonth, scrollView)
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-//                        scrollView.scrollTo(currentMonth, anchor: .top)
-//                        isLoading = false
-//                    }
+                }
+                .onChange(of: selectedYear) { newValue in
+                    cycleLog = getSelectedDateCycleLog()
+//                    date = convertToDate()
+                }
+                .onChange(of: selectedMonth) { newValue in
+                    cycleLog = getSelectedDateCycleLog()
+//                    date = convertToDate()
+                }
+                .onChange(of: selectedDay) { newValue in
+                    cycleLog = getSelectedDateCycleLog()
+//                    date = convertToDate()
+                    print("fffff", date, cycleLog)
                 }
             }
             
             NavigationLink(destination: LogAddView(
-                viewModel: LogAddViewModel(cycleLog: getSelectedDateCycleLog(), date: convertToDate())
+                viewModel: LogAddViewModel(cycleLog: cycleLog, date: date)
             )) {
                 Text("다음")
                     .foregroundColor(Color.white)
@@ -77,18 +90,21 @@ struct CalenderView: View {
                     .cornerRadius(12)
                     .padding(.horizontal)
             }
+//            Button(action: {
+//                print("다음", selectedYear, selectedMonth, selectedDay)
+//                print(convertToDate())
+//            }) {
+//                Text("다음")
+//                    .foregroundColor(Color.white)
+//                    .font(.title3)
+//                    .bold()
+//                    .frame(maxWidth: .infinity, maxHeight: 50)
+//                    .background(Color.vividPurple)
+//                    .cornerRadius(12)
+//                    .padding(.horizontal)
+//            }
         }
         .clipped()
-//        .overlay() {
-//            if isLoading {
-//                VStack{
-//                    ProgressView()
-//                        .tint(.vividPurple)
-//                }
-//                .frame(maxWidth: .infinity, maxHeight: .infinity)
-//                .background(Color.white)
-//            }
-//        }
         .navigationTitle("오늘의 생리 기록")
         .navigationBarBackButtonHidden()
         .toolbar{
@@ -103,8 +119,15 @@ struct CalenderView: View {
         }
     }
     
+    var date: Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        print("convertToDate", selectedYear, newMonth, selectedDay)
+        
+        return dateFormatter.date(from: "\(selectedYear)-\(String(format: "%02d", newMonth))-\(String(format: "%02d", selectedDay))")!
+    }
+
     func getSelectedDateCycleLog() -> CycleLog? {
-        let newMonth = calculateMonth()
         let selectedDate = "\(selectedYear)-\(String(format: "%02d", newMonth))-\(String(format: "%02d", selectedDay))"
         var result: CycleLog?
         let dateFormatter = DateFormatter()
@@ -120,16 +143,10 @@ struct CalenderView: View {
         return result
     }
     
-    func convertToDate() -> Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let newMonth = calculateMonth()
-        return dateFormatter.date(from: "\(selectedYear)-\(String(format: "%02d", newMonth))-\(String(format: "%02d", selectedDay))")!
-    }
-    
     func refineRecords() -> [String] {
         var timeRecords: [String] = []
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR_POSIX")
         dateFormatter.dateFormat = "YYYY-MM-dd"
         for record in records {
             let date = dateFormatter.string(from: record.wrappedDate)
@@ -138,21 +155,16 @@ struct CalenderView: View {
         return timeRecords
     }
     
-    func calculateMonth() -> Int {
-        if selectedMonth > 12 {
-            return selectedMonth % 12 == 0 ? 12 : selectedMonth % 12
-        } else if selectedMonth < 1 {
-            return 12 + selectedMonth % 12
-        } else {
+    var newMonth: Int {
+        switch selectedMonth {
+        case 1...12:
             return selectedMonth
+        case 13...:
+            return selectedMonth % 12 == 0 ? 12 : selectedMonth % 12
+        default:
+            return 12 + selectedMonth % 12
         }
     }
-    
-//    func appendCurrentMonth(_ currentMonth: Int, _ scrollView: ScrollViewProxy) {
-//        for i in (currentMonth - 12)...currentMonth {
-//            months.append(i)
-//        }
-//    }
     
     func appendCurrentMonth() {
         months.append(currentMonth)
@@ -167,15 +179,6 @@ struct CalenderView: View {
         }
     }
     
-//    func prependPreviousMonths(_ count: Int) {
-//        if let firstMonth = months.first {
-//            for i in 1...count {
-//                let newMonth = firstMonth - i
-//                months.insert(newMonth, at: 0)
-//            }
-//        }
-//    }
-    
     func prependPreviousMonths(_ count: Int) {
         if let firstMonth = months.last {
             for i in 1...count {
@@ -187,6 +190,17 @@ struct CalenderView: View {
     
     struct MonthlyView: View {
         var month: Int
+        var newMonth: Int {
+            switch month {
+            case 1...12:
+                return month
+            case 13...:
+                return month % 12 == 0 ? 12 : month % 12
+            default:
+                return 12 + month % 12
+            }
+        }
+        
         var timeRecords: [String]
         @Binding var selectedDay: Int
         @Binding var selectedMonth: Int
@@ -195,8 +209,8 @@ struct CalenderView: View {
         @State var dayInMonth = 30
         @State var startingDay = 0
         @State var isCurrentMonth = false
-        @State var yearGap = 0
-        @State private var newMonth = 0
+//        @State var yearGap = 0
+//        @State private var newMonth = 0
         
         let columns = [
             GridItem(.flexible()),
@@ -226,7 +240,9 @@ struct CalenderView: View {
                         }
                         else {
                             let dayInt = item - startingDay + 1
-                            if customCalenderVM.currentYear + yearGap == selectedYear && month == selectedMonth && dayInt == selectedDay {
+                            if selectedYear == customCalenderVM.currentYear + yearGap
+                                && selectedMonth == newMonth
+                                && selectedDay == dayInt {
                                 // selected
                                 Text("\(dayInt)")
                                     .fontWeight(.heavy)
@@ -272,8 +288,8 @@ struct CalenderView: View {
                 }
                 .padding()
             }.onAppear {
-                calculateNewMonth(month)
-                calculateYearGap(month)
+//                calculateNewMonth(month)
+//                calculateYearGap(month)
                 isCurrentMonth = month == customCalenderVM.currentMonth
                 selectedMonth = customCalenderVM.currentMonth
                 findDaysInMonth(month)
@@ -282,6 +298,7 @@ struct CalenderView: View {
         }
         
         func checkRecordedDay(_ dayInt: Int) -> Bool {
+            
             var result: Bool = false
             for record in timeRecords {
                 let startMonthIndex = record.index(record.startIndex, offsetBy: 5)
@@ -292,19 +309,12 @@ struct CalenderView: View {
                 let monthSubstring = record[startMonthIndex...endMonthIndex]
                 let daySubstring = record[startDayIndex...endDayIndex]
                 
-                if Int(daySubstring) != dayInt {
-                    result = false
-                    break
-                } else if Int(monthSubstring) != newMonth {
-                    result = false
-                    break
-                } else if Int(yearSubstring) != customCalenderVM.currentYear + yearGap {
-                    result = false
-                    break
-                } else {
+                if Int(daySubstring) == dayInt && Int(monthSubstring) == newMonth && Int(yearSubstring) == customCalenderVM.currentYear + yearGap {
                     result = true
+                    break
                 }
             }
+            print(#function, newMonth, dayInt, timeRecords, result)
             return result
         }
         
@@ -312,6 +322,8 @@ struct CalenderView: View {
             selectedYear = customCalenderVM.currentYear + yearGap
             selectedMonth = month
             selectedDay = dayInt
+//            cycleLog = getSelectedDateCycleLog()
+//            date = convertToDate()
         }
         
         func findDaysInMonth(_ month: Int) {
@@ -323,23 +335,23 @@ struct CalenderView: View {
             self.dayInMonth = calendar.dateComponents([.day], from: interval.start, to: interval.end).day!
         }
         
-        func calculateNewMonth(_ month: Int) {
-            if month > 12 {
-                newMonth = month % 12 == 0 ? 12 : month % 12
-            } else if month < 1 {
-                newMonth = 12 + month % 12
-            } else {
-                newMonth = month
-            }
-        }
+//        func calculateNewMonth(_ month: Int) {
+//            if month > 12 {
+//                newMonth = month % 12 == 0 ? 12 : month % 12
+//            } else if month < 1 {
+//                newMonth = 12 + month % 12
+//            } else {
+//                newMonth = month
+//            }
+//        }
         
-        func calculateYearGap(_ month: Int) {
+        var yearGap: Int {
             if month < 0 {
-                yearGap = month / 12 - 1
+                return month / 12 - 1
             } else if month % 12 == 0 {
-                yearGap = month / 12 - 1
+                return month / 12 - 1
             } else {
-                yearGap = month / 12
+                return month / 12
             }
         }
     }
